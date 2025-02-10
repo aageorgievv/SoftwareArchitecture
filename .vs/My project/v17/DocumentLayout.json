@@ -1,0 +1,130 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Projects\\My project\\My project\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|c:\\projects\\my project\\my project\\assets\\scripts\\movebehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\movebehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|C:\\Projects\\My project\\My project\\assets\\scripts\\attackbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\attackbehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|C:\\Projects\\My project\\My project\\assets\\scripts\\towerupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{32C3BDE6-E125-3128-82C1-25D0441455A3}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\towerupgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\DeathBehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\LayerBehaviour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\DeathBehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Projects\\My project\\My project\\assets\\scripts\\towercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:assets\\scripts\\towercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AttackBehaviour.cs",
+              "DocumentMoniker": "C:\\Projects\\My project\\My project\\Assets\\Scripts\\AttackBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AttackBehaviour.cs",
+              "ToolTip": "C:\\Projects\\My project\\My project\\Assets\\Scripts\\AttackBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AttackBehaviour.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T21:49:55.83Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DeathBehaviour.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\DeathBehaviour.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\DeathBehaviour.cs",
+              "ToolTip": "C:\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\DeathBehaviour.cs",
+              "RelativeToolTip": "..\\..\\..\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\DeathBehaviour.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T21:31:46.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MoveBehaviour.cs",
+              "DocumentMoniker": "C:\\Projects\\My project\\My project\\Assets\\Scripts\\MoveBehaviour.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\MoveBehaviour.cs",
+              "ToolTip": "C:\\Projects\\My project\\My project\\Assets\\Scripts\\MoveBehaviour.cs",
+              "RelativeToolTip": "Assets\\Scripts\\MoveBehaviour.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T21:31:45.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TowerUpgrade.cs",
+              "DocumentMoniker": "C:\\Projects\\My project\\My project\\Assets\\Scripts\\TowerUpgrade.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TowerUpgrade.cs",
+              "ToolTip": "C:\\Projects\\My project\\My project\\Assets\\Scripts\\TowerUpgrade.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TowerUpgrade.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T21:32:50.603Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LayerBehaviour.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\LayerBehaviour.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\LayerBehaviour.cs",
+              "ToolTip": "C:\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\LayerBehaviour.cs",
+              "RelativeToolTip": "..\\..\\..\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\LayerBehaviour.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T21:31:46.162Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DeathBehavior.cs",
+              "DocumentMoniker": "C:\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\DeathBehavior.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\DeathBehavior.cs",
+              "ToolTip": "C:\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\DeathBehavior.cs",
+              "RelativeToolTip": "..\\..\\..\\Users\\aleks\\Desktop\\My project\\Assets\\Scripts\\DeathBehavior.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T21:06:32.734Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TowerController.cs",
+              "DocumentMoniker": "C:\\Projects\\My project\\My project\\Assets\\Scripts\\TowerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\TowerController.cs",
+              "ToolTip": "C:\\Projects\\My project\\My project\\Assets\\Scripts\\TowerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\TowerController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T20:58:06.128Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

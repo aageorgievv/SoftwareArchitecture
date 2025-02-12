@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 93578174}
   - component: {fileID: 93578173}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Finish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -379,7 +379,8 @@ GameObject:
   - component: {fileID: 249421359}
   - component: {fileID: 249421358}
   - component: {fileID: 249421364}
-  m_Layer: 0
+  - component: {fileID: 249421365}
+  m_Layer: 3
   m_Name: Balloon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -396,7 +397,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -513,6 +514,19 @@ MonoBehaviour:
   - {fileID: 923539116}
   - {fileID: 1805515779}
   - {fileID: 1137711492}
+--- !u!114 &249421365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249421357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e115292dd084749949f88267eac262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveBehaviour: {fileID: 249421364}
 --- !u!1 &526174635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1217,8 @@ GameObject:
   - component: {fileID: 1240749838}
   - component: {fileID: 1240749837}
   - component: {fileID: 1240749836}
+  - component: {fileID: 1240749841}
+  - component: {fileID: 1240749840}
   m_Layer: 0
   m_Name: Tower
   m_TagString: Untagged
@@ -1225,7 +1241,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1296,6 +1312,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1240749840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240749835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54eb354735802eb4e97383b0902bcbde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackBehaviour: {fileID: 1240749841}
+  attackRange: 10
+  attackCooldown: 1
+--- !u!114 &1240749841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240749835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2009c6d13835246b89d36ccd2e6dd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 9085539441546697847, guid: edc0b83f54c89a3409b81b3e3eaaa754, type: 3}
+  projectileSpeed: 10
 --- !u!1 &1552140226
 GameObject:
   m_ObjectHideFlags: 0
@@ -1902,7 +1947,7 @@ GameObject:
   - component: {fileID: 1857334636}
   - component: {fileID: 1857334635}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

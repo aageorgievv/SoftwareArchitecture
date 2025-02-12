@@ -6,7 +6,7 @@ using UnityEngine.AI;
 using static UnityEditor.FilePathAttribute;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class MoveBehaviour : MonoBehaviour
+public class MoveBehaviour : MonoBehaviour, IMovable
 {
     [SerializeField]
     private NavMeshAgent agent;
@@ -16,7 +16,6 @@ public class MoveBehaviour : MonoBehaviour
     private int currentTravelPointIndex = 0;
 
     private Vector3 targetPosition = Vector3.zero;
-
 
     // Start is called before the first frame update
     void Start()
@@ -29,12 +28,11 @@ public class MoveBehaviour : MonoBehaviour
         }
         else
         {
-            throw new System.Exception("No travel points found!");
+            Debug.LogError("No travel points found!");
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Move()
     {
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
         {

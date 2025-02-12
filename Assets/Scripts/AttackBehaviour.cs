@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackBehaviour : MonoBehaviour
+public class AttackBehaviour : MonoBehaviour, IAttackable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private GameObject projectilePrefab;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField]
+    private float projectileSpeed = 10f;
+
+    public void Attack(Transform enemy)
     {
-        
+        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        Vector3 direction = (enemy.position - transform.position).normalized;
+        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+
+        if(rb != null)
+        {
+            rb.velocity = direction * projectileSpeed;
+        } else
+        {
+            Debug.LogError("Projectile's RigidBody is null");
+        }
+
+
     }
 }

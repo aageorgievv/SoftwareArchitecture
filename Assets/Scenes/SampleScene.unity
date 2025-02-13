@@ -527,6 +527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveBehaviour: {fileID: 249421364}
+  health: 100
 --- !u!1 &526174635
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,14 +12,15 @@ public class AttackBehaviour : MonoBehaviour, IAttackable
 
     public void Attack(Transform enemy)
     {
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        Vector3 direction = (enemy.position - transform.position).normalized;
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
+        GameObject projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
 
-        if(rb != null)
+        if (projectile != null)
         {
-            rb.velocity = direction * projectileSpeed;
-        } else
+            Vector3 direction = (enemy.position - transform.position).normalized;
+            projectile.Initialize(direction);
+        }
+        else
         {
             Debug.LogError("Projectile's RigidBody is null");
         }

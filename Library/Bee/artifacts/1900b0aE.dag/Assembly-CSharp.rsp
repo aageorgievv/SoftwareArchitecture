@@ -361,6 +361,7 @@
 "Assets/Scripts/Interfaces/IAttackable.cs"
 "Assets/Scripts/Interfaces/IMovable.cs"
 "Assets/Scripts/MoveBehaviour.cs"
+"Assets/Scripts/Projectile.cs"
 "Assets/Scripts/TowerController.cs"
 "Assets/Scripts/TowerUpgrade.cs"
 -langversion:9.0

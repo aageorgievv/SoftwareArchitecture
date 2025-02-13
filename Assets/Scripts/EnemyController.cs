@@ -9,6 +9,9 @@ public class EnemyController : MonoBehaviour
 
     private IMovable movable;
 
+    [SerializeField]
+    private float health = 100f;
+
     void Start()
     {
         if (moveBehaviour != null)
@@ -24,5 +27,21 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         movable?.Move();
+    }
+
+   public void TakeDamage(float amount)
+    {
+        health -= amount;
+        Debug.Log($"{gameObject.name} took {amount} damage. Remaining HP: {health}");
+
+        if(health <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

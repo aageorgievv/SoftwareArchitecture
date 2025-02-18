@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d542f3647b2a24f83635c84e500316, type: 3}
+  m_Name: Test
+  m_EditorClassIdentifier: 
+  EnemyWaves:
+  - enemyPrefab: {fileID: 2963343655418757013, guid: bd72d56bdc5f3b24ea0f6ab4781f2b48, type: 3}
+    enemyAmount: 1
+    spawnDelay: 1
+  - enemyPrefab: {fileID: 2963343655418757013, guid: bd72d56bdc5f3b24ea0f6ab4781f2b48, type: 3}
+    enemyAmount: 2
+    spawnDelay: 0.8
+  - enemyPrefab: {fileID: 2963343655418757013, guid: bd72d56bdc5f3b24ea0f6ab4781f2b48, type: 3}
+    enemyAmount: 3
+    spawnDelay: 0.6
+  - enemyPrefab: {fileID: 2963343655418757013, guid: bd72d56bdc5f3b24ea0f6ab4781f2b48, type: 3}
+    enemyAmount: 4
+    spawnDelay: 0.5
+  - enemyPrefab: {fileID: 2963343655418757013, guid: bd72d56bdc5f3b24ea0f6ab4781f2b48, type: 3}
+    enemyAmount: 5
+    spawnDelay: 0.5
+  waveCooldown: 2

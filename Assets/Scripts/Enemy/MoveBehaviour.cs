@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,6 +9,8 @@ using static UnityEditor.FilePathAttribute;
 [RequireComponent(typeof(NavMeshAgent))]
 public class MoveBehaviour : MonoBehaviour, IMovable
 {
+    public event Action<MoveBehaviour> OnDestinationReached;
+
     [SerializeField]
     private NavMeshAgent agent;
 
@@ -31,7 +34,7 @@ public class MoveBehaviour : MonoBehaviour, IMovable
             {
                 if (Vector3.Distance(transform.position, travelPoints[currentTravelPointIndex].position) >= agent.stoppingDistance)
                 {
-                    Destroy(gameObject);
+                    OnDestinationReached.Invoke(this);
                 }
             }
             else

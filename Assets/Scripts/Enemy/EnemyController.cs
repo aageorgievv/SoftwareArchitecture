@@ -29,7 +29,23 @@ public class EnemyController : MonoBehaviour
         movable?.Move();
     }
 
-   public void TakeDamage(float amount)
+    private void OnEnable()
+    {
+        if (moveBehaviour is MoveBehaviour mb)
+        {
+            mb.OnDestinationReached += HandleDestinationReached;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (moveBehaviour is MoveBehaviour mb)
+        {
+            mb.OnDestinationReached -= HandleDestinationReached;
+        }
+    }
+
+    public void TakeDamage(float amount)
     {
         health -= amount;
         Debug.Log($"{gameObject.name} took {amount} damage. Remaining HP: {health}");
@@ -40,8 +56,23 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
-        Destroy(gameObject);
+        if (EnemySpawner.Instance != null)
+        {
+            Destroy(gameObject);
+            EnemySpawner.Instance.EnemyDefeated();
+        } else
+        {
+            Debug.LogError("EnemySpawner is null");
+        }
+    }
+
+    private void HandleDestinationReached(MoveBehaviour move)
+    {
+        if (move == moveBehaviour)
+        {
+            Die();
+        }
     }
 }

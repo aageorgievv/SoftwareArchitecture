@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     //Controls delay between enemy spawns
     // Fires an event when a wave ends
     public static event Action OnWaveEnd;
+    public static EnemySpawner Instance { get; private set; }
 
     [SerializeField]
     private List<WaveConfig> waves;
@@ -18,6 +19,20 @@ public class EnemySpawner : MonoBehaviour
     private Transform spawnPoint;
 
     private int currentWaveIndex = 0;
+
+    private int activeEnemies = 0;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -54,11 +69,7 @@ public class EnemySpawner : MonoBehaviour
                 yield return new WaitForSeconds(waveConfig.waveCooldown);
             }
         }
-
         currentWaveIndex++;
-        // Notify GameManager when the entire wave ends
-        OnWaveEnd?.Invoke();
-        Debug.Log("End");
     }
 
     private IEnumerator spawnEnemySet(EnemySet enemySet)
@@ -78,6 +89,18 @@ public class EnemySpawner : MonoBehaviour
         if (moveBehaviour != null)
         {
             moveBehaviour.SetTravelPoints(travelPoints);
+        }
+        activeEnemies++;
+    }
+
+    public void EnemyDefeated()
+    {
+        activeEnemies--;
+
+        if (activeEnemies <= 0)
+        {
+            OnWaveEnd?.Invoke();
+            Debug.Log("Wave ended");
         }
     }
 }

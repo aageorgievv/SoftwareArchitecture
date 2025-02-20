@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float health = 100f;
     [SerializeField]
-    private float Speed = 2;
+    private float speed = 2;
 
     [SerializeField]
     private int money = 100;
@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
 
         if(moveBehaviour is MoveBehaviour moveBeh)
         {
-            moveBeh.SetSpeed(Speed);
+            moveBeh.SetSpeed(speed);
         }
     }
 

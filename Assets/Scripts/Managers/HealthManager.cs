@@ -40,7 +40,7 @@ public class HealthManager : MonoBehaviour
         currentHealth--;
         Debug.Log($"Health: {currentHealth}");
 
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             OnGameOver?.Invoke();
         }

@@ -12,12 +12,47 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField]
     protected int money;
 
+    private IMovable movable;
+
+    [SerializeField]
     protected MoveBehaviour moveBehaviour;
 
     protected virtual void Start()
     {
-        moveBehaviour = GetComponent<MoveBehaviour>();
-        moveBehaviour.SetSpeed(speed);
+        if (moveBehaviour != null)
+        {
+            movable = moveBehaviour as IMovable;
+        }
+        else
+        {
+            Debug.LogError("MoveBehaviour not found");
+        }
+
+        if (moveBehaviour is MoveBehaviour moveBeh)
+        {
+            moveBeh.SetSpeed(speed);
+        }
+    }
+
+    private void OnEnable()
+    {
+        if (moveBehaviour is MoveBehaviour mb)
+        {
+            mb.OnDestinationReached += HandleDestinationReached;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (moveBehaviour is MoveBehaviour mb)
+        {
+            mb.OnDestinationReached -= HandleDestinationReached;
+        }
+    }
+
+    protected virtual void Update()
+    {
+        movable?.Move();
     }
 
     public virtual void TakeDamage(float amount)
@@ -31,8 +66,25 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    public virtual void Die()
+    protected virtual void Die()
     {
-        Destroy(gameObject);
+        if (EnemySpawner.Instance != null)
+        {
+            Destroy(gameObject);
+            EnemySpawner.Instance.EnemyDefeated();
+        }
+        else
+        {
+            Debug.LogError("EnemySpawner is null");
+        }
+    }
+
+    protected virtual void HandleDestinationReached(MoveBehaviour move)
+    {
+        if (move == moveBehaviour)
+        {
+            HealthManager.Instance?.ReduceLife();
+            Die();
+        }
     }
 }

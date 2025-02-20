@@ -8,8 +8,9 @@ public class EnemySpawner : MonoBehaviour
     // Spawns enemies based on WaveConfig(Scriptable Object - Containing EnemySet info) 
     //Controls delay between enemy spawns
     // Fires an event when a wave ends
-    public static event Action OnWaveEnd;
     public static EnemySpawner Instance { get; private set; }
+
+    public event Action OnWaveEnd;
 
     [SerializeField]
     private List<WaveConfig> waves;
@@ -72,7 +73,7 @@ public class EnemySpawner : MonoBehaviour
         currentWaveIndex++;
     }
 
-    private IEnumerator spawnEnemySet(EnemySet enemySet)
+    private IEnumerator spawnEnemySet(EnemySettings enemySet)
     {
         for(int i = 0; i < enemySet.enemyAmount; i++)
         {

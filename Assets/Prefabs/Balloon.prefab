@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8654462309662489601}
   - component: {fileID: 4998479004228599689}
   - component: {fileID: 8530804222398655364}
-  - component: {fileID: 5206734368218075300}
+  - component: {fileID: 5562072593906443581}
   m_Layer: 3
   m_Name: Balloon
   m_TagString: Untagged
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 4998479004228599689}
---- !u!114 &5206734368218075300
+--- !u!114 &5562072593906443581
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,3 +157,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveBehaviour: {fileID: 8530804222398655364}
   health: 100
+  Speed: 2
+  money: 100

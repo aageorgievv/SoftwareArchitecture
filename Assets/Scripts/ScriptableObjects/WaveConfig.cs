@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewWaveConfig", menuName = "EnemyWaves/WaveConfig")]
 public class WaveConfig : ScriptableObject
 {
-    public List<EnemySet> EnemyWaves;
+    public List<EnemySettings> EnemyWaves;
     public float waveCooldown = 5f;
 }

@@ -12,7 +12,7 @@ public class MoveBehaviour : MonoBehaviour, IMovable
     public event Action<MoveBehaviour> OnDestinationReached;
 
     [SerializeField]
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     private List<Transform> travelPoints = new List<Transform>();
 
@@ -57,5 +57,10 @@ public class MoveBehaviour : MonoBehaviour, IMovable
         {
             Debug.LogError("No travel points found!");
         }
+    }
+
+    public void SetSpeed(float speed)
+    {
+        agent.speed = speed;
     }
 }

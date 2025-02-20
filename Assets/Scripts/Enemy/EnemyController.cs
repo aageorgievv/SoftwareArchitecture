@@ -11,6 +11,11 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField]
     private float health = 100f;
+    [SerializeField]
+    private float Speed = 2;
+
+    [SerializeField]
+    private int money = 100;
 
     void Start()
     {
@@ -21,6 +26,11 @@ public class EnemyController : MonoBehaviour
         else
         {
             Debug.LogError("MoveBehaviour not found");
+        }
+
+        if(moveBehaviour is MoveBehaviour moveBeh)
+        {
+            moveBeh.SetSpeed(Speed);
         }
     }
 
@@ -72,7 +82,13 @@ public class EnemyController : MonoBehaviour
     {
         if (move == moveBehaviour)
         {
+            HealthManager.Instance?.ReduceLife();
             Die();
         }
+    }
+
+    public int GetCarriedMoney()
+    {
+        return money;
     }
 }

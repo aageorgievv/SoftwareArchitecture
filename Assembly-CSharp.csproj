@@ -63,14 +63,19 @@
     <Compile Include="Assets\Scripts\Projectiles\Projectile.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Enemy\MoveBehaviour.cs" />
+    <Compile Include="Assets\Scripts\Enemy\FastEnemy.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IAttackable.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\WaveConfig.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyController.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Managers\HealthManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy\TankEnemy.cs" />
+    <Compile Include="Assets\Scripts\Enemy\DefaultEnemy.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerUpgrade.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IMovable.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemySettings.cs" />
+    <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Tower\AttackBehaviour.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemySet.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyBase.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerController.cs" />
   </ItemGroup>
   <ItemGroup>

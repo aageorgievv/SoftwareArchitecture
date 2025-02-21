@@ -15,7 +15,7 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField]
     protected int money;
     [SerializeField]
-    private int damage; // To Do
+    protected int damage; // To Do
 
     private IMovable movable;
 

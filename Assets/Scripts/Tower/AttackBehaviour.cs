@@ -7,9 +7,6 @@ public class AttackBehaviour : MonoBehaviour, IAttackable
     [SerializeField]
     private GameObject projectilePrefab;
 
-    [SerializeField]
-    private float projectileSpeed = 10f;
-
     public void Attack(Transform enemy)
     {
         GameObject projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);

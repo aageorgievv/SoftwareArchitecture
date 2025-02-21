@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
@@ -5,12 +6,16 @@ using UnityEngine;
 
 public abstract class EnemyBase : MonoBehaviour
 {
+    public static event Action<Vector3, int> OnEnemyDefeated;
+
     [SerializeField]
     protected float health;
     [SerializeField]
     protected float speed;
     [SerializeField]
     protected int money;
+    [SerializeField]
+    private int damage; // To Do
 
     private IMovable movable;
 
@@ -28,10 +33,7 @@ public abstract class EnemyBase : MonoBehaviour
             Debug.LogError("MoveBehaviour not found");
         }
 
-        if (moveBehaviour is MoveBehaviour moveBeh)
-        {
-            moveBeh.SetSpeed(speed);
-        }
+        moveBehaviour.SetSpeed(speed);
     }
 
     private void OnEnable()
@@ -40,6 +42,10 @@ public abstract class EnemyBase : MonoBehaviour
         {
             mb.OnDestinationReached += HandleDestinationReached;
         }
+        else
+        {
+            Debug.LogError("Check event subsriptions in EnemyBase");
+        }
     }
 
     private void OnDisable()
@@ -47,6 +53,10 @@ public abstract class EnemyBase : MonoBehaviour
         if (moveBehaviour is MoveBehaviour mb)
         {
             mb.OnDestinationReached -= HandleDestinationReached;
+        }
+        else
+        {
+            Debug.LogError("Check event subsriptions in EnemyBase");
         }
     }
 
@@ -63,6 +73,7 @@ public abstract class EnemyBase : MonoBehaviour
         if (health <= 0)
         {
             Die();
+            OnEnemyDefeated?.Invoke(transform.position, money);
         }
     }
 

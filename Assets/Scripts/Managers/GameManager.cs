@@ -6,10 +6,11 @@ public class GameManager : MonoBehaviour
 {
     private enum EGameState
     {
+        None,
         BuildingPhase,
         CombatPhase
     }
-    private EGameState currentGameState;
+    private EGameState currentGameState = EGameState.None;
 
     [SerializeField]
     private EnemySpawner enemySpawner;

@@ -28,6 +28,17 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
+        if (EnemySpawner.Instance == null)
+        {
+            Debug.LogError("EnemySpawner instance is null");
+            return;
+        }
+        if (HealthManager.Instance == null)
+        {
+            Debug.LogError("HealthManager instance is null");
+            return;
+        }
+
         EnemySpawner.Instance.OnWaveEnd += StartBuildPhase;
         HealthManager.Instance.OnGameOver += HandleGameOver;
     }

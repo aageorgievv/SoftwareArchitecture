@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    //To do: Make this abstract class so you can have many more projectile effects
     [SerializeField]
     private float speed = 10f;
     [SerializeField]
@@ -21,7 +22,6 @@ public class Projectile : MonoBehaviour
 
     void Update()
     {
-        //maybe remove deltaTime
         transform.position += direction * speed * Time.deltaTime;
     }
 

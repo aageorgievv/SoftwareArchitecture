@@ -7,14 +7,14 @@ public abstract class TowerBase : MonoBehaviour
     [SerializeField]
     private MonoBehaviour attackBehaviour;
 
-    private IAttackable attackable;
+    protected IAttackable attackable;
 
     [SerializeField]
     protected int attackRange = 10;
     [SerializeField]
     protected int attackCooldown = 2;
 
-    private float lastAttackTime = float.MinValue;
+    protected float lastAttackTime = float.MinValue;
 
     protected virtual void Start()
     {

@@ -40,7 +40,6 @@ public class ElectricProjectile : ProjectileBase
         {
             chainedEnemies[i].Stun(stunDuration);
             chainedEnemies[i].TakeDamage(damage);
-            Debug.Log($"enemy: {i}");
         }
     }
 }

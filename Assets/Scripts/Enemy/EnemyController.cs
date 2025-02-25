@@ -17,6 +17,11 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private int money = 100;
 
+    [SerializeField]
+    private EnemySpawner spawner;
+    [SerializeField]
+    private HealthManager healthManager;
+
     void Start()
     {
         if (moveBehaviour != null)
@@ -68,10 +73,10 @@ public class EnemyController : MonoBehaviour
 
     public void Die()
     {
-        if (EnemySpawner.Instance != null)
+        if (spawner != null)
         {
             Destroy(gameObject);
-            EnemySpawner.Instance.EnemyDefeated();
+            spawner.EnemyDefeated();
         } else
         {
             Debug.LogError("EnemySpawner is null");
@@ -82,7 +87,7 @@ public class EnemyController : MonoBehaviour
     {
         if (move == moveBehaviour)
         {
-            HealthManager.Instance?.ReduceLife();
+            healthManager?.ReduceLife();
             Die();
         }
     }

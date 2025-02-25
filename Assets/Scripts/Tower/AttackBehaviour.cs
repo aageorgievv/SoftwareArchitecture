@@ -10,7 +10,7 @@ public class AttackBehaviour : MonoBehaviour, IAttackable
     public void Attack(Transform enemy)
     {
         GameObject projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        ProjectileBase projectile = projectileObject.GetComponent<ProjectileBase>();
 
         if (projectile != null)
         {
@@ -21,7 +21,5 @@ public class AttackBehaviour : MonoBehaviour, IAttackable
         {
             Debug.LogError("Projectile's RigidBody is null");
         }
-
-
     }
 }

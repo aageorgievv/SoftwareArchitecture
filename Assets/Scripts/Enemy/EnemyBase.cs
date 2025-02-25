@@ -17,10 +17,16 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField]
     protected int damage; // To Do
 
+    [SerializeField]
+    protected bool canBeStunned = true;
+    private bool isStunned = false;
+
     private IMovable movable;
 
     [SerializeField]
     protected MoveBehaviour moveBehaviour;
+
+    private EnemySpawner enemySpawner;
 
     protected virtual void Start()
     {
@@ -62,13 +68,16 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        movable?.Move();
+        if (!isStunned)
+        {
+            movable?.Move();
+        }
     }
 
     public virtual void TakeDamage(float amount)
     {
         health -= amount;
-        Debug.Log($"Health remaining {health}, enemy's worth {money}");
+        //Debug.Log($"Health remaining {health}, enemy's worth {money}");
 
         if (health <= 0)
         {
@@ -79,10 +88,11 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Die()
     {
-        if (EnemySpawner.Instance != null)
+        StopAllCoroutines();
+        if (enemySpawner != null)
         {
+            enemySpawner.EnemyDefeated();
             Destroy(gameObject);
-            EnemySpawner.Instance.EnemyDefeated();
         }
         else
         {
@@ -94,8 +104,34 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (move == moveBehaviour)
         {
-            HealthManager.Instance?.ReduceLife();
+            HealthManager healthManager = GameManager.GetManager<HealthManager>();
+            healthManager?.ReduceLife();
             Die();
         }
+    }
+
+    public void Stun(float stunDuration)
+    {
+        if (!canBeStunned || isStunned)
+        {
+            return;
+        }
+
+        StartCoroutine(StunEffect(stunDuration));
+    }
+
+    private IEnumerator StunEffect(float duration)
+    {
+        isStunned = true;
+        moveBehaviour.IsAgentStopped(true);
+        Debug.Log($"{gameObject.name} is stunned for {duration} seconds.");
+        yield return new WaitForSeconds(duration);
+        isStunned = false;
+        moveBehaviour.IsAgentStopped(false);
+    }
+
+    public void SetSpawner(EnemySpawner spawner)
+    {
+        enemySpawner = spawner;
     }
 }

@@ -1,6 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public interface IManager
+{
+
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -13,40 +19,46 @@ public class GameManager : MonoBehaviour
     private EGameState currentGameState = EGameState.None;
 
     [SerializeField]
+    private HealthManager healthManager;
+
+    [SerializeField]
+    private TextDisplayManager textDisplayManager;
+
+    [SerializeField]
     private EnemySpawner enemySpawner;
     [SerializeField]
     private float buildPhaseDuration = 10f;
+
+    private static Dictionary<Type, IManager> managers = new Dictionary<Type, IManager>();
+
+    private void Awake()
+    {
+        if(healthManager == null)
+        {
+            Debug.LogError("HealthManager is null");
+        }
+
+        managers.Add(typeof(HealthManager), healthManager);
+        managers.Add(typeof(TextDisplayManager), textDisplayManager);
+
+        enemySpawner.OnWaveEnd += StartBuildPhase;
+        healthManager.OnGameOver += HandleGameOver;
+    }
+
+    public static T GetManager<T>() where T : IManager
+    {
+        return (T)managers[typeof(T)];
+    }
 
     void Start()
     {
         StartBuildPhase();
     }
 
-    void Update()
+    private void OnDestroy()
     {
-    }
-
-    private void OnEnable()
-    {
-        if (EnemySpawner.Instance == null)
-        {
-            Debug.LogError("EnemySpawner instance is null");
-            return;
-        }
-        if (HealthManager.Instance == null)
-        {
-            Debug.LogError("HealthManager instance is null");
-            return;
-        }
-
-        EnemySpawner.Instance.OnWaveEnd += StartBuildPhase;
-        HealthManager.Instance.OnGameOver += HandleGameOver;
-    }
-
-    private void OnDisable()
-    {
-        EnemySpawner.Instance.OnWaveEnd -= StartBuildPhase;
-        HealthManager.Instance.OnGameOver -= HandleGameOver;
+        enemySpawner.OnWaveEnd -= StartBuildPhase;
+        healthManager.OnGameOver -= HandleGameOver;
     }
 
     private void StartBuildPhase()

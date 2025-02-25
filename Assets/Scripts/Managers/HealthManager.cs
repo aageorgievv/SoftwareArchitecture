@@ -3,27 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthManager : MonoBehaviour
+public class HealthManager : MonoBehaviour, IManager
 {
-    public static HealthManager Instance { get; private set; }
-
     public event Action OnGameOver;
 
     [SerializeField]
     private int maxHealth = 10;
     private int currentHealth;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     void Start()
     {

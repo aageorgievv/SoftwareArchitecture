@@ -8,7 +8,6 @@ public class EnemySpawner : MonoBehaviour
     // Spawns enemies based on WaveConfig(Scriptable Object - Containing EnemySet info) 
     //Controls delay between enemy spawns
     // Fires an event when a wave ends
-    public static EnemySpawner Instance { get; private set; }
 
     public event Action OnWaveEnd;
 
@@ -22,18 +21,6 @@ public class EnemySpawner : MonoBehaviour
     private int currentWaveIndex = 0;
 
     private int activeEnemies = 0;
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
 
     void Start()
     {
@@ -85,6 +72,8 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnEnemy(GameObject enemyPrefab)
     {
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+        EnemyBase enemyBase = enemy.GetComponent<EnemyBase>();
+        enemyBase.SetSpawner(this);
         MoveBehaviour moveBehaviour = enemy.GetComponent<MoveBehaviour>();
 
         if (moveBehaviour != null)

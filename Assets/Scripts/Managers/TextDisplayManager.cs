@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class TextDisplayManager : MonoBehaviour
+public class TextDisplayManager : MonoBehaviour, IManager
 {
     [SerializeField]
     private GameObject textPrefab;

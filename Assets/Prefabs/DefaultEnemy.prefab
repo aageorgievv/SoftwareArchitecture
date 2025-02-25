@@ -155,7 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 803f4376b37c6a54faff9ea63651e60d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 100
   speed: 2
   money: 100
+  damage: 0
+  canBeStunned: 1
   moveBehaviour: {fileID: 8530804222398655364}

@@ -63,4 +63,9 @@ public class MoveBehaviour : MonoBehaviour, IMovable
     {
         agent.speed = speed;
     }
+
+    public void IsAgentStopped(bool state)
+    {
+        agent.isStopped = state;
+    }
 }

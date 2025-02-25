@@ -40,7 +40,7 @@ public abstract class TowerBase : MonoBehaviour
         }
     }
 
-    protected virtual Transform FindClosestEnemy()
+    private Transform FindClosestEnemy()
     {
         //Possibly place a layer masks so it detects only enemies.
         int enemyLayer = LayerMask.GetMask("Enemy");

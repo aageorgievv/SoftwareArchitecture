@@ -21,12 +21,6 @@ public class AoeTower : TowerBase
         }
     }
 
-    protected override Transform FindClosestEnemy()
-    {
-        //This might be kind of bad?
-        return null;
-    }
-
     private List<Transform> FindAllEnemiesInRange()
     {
         int enemyLayer = LayerMask.GetMask("Enemy");

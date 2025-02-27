@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour
     private TextDisplayManager textDisplayManager;
 
     [SerializeField]
+    private MoneyManager moneyManager;
+
+    [SerializeField]
     private EnemySpawner enemySpawner;
     [SerializeField]
     private float buildPhaseDuration = 10f;
@@ -38,8 +41,19 @@ public class GameManager : MonoBehaviour
             Debug.LogError("HealthManager is null");
         }
 
+        if (textDisplayManager == null)
+        {
+            Debug.LogError("TextDisplayManager is null");
+        }
+
+        if (moneyManager == null)
+        {
+            Debug.LogError("MoneyManager is null");
+        }
+
         managers.Add(typeof(HealthManager), healthManager);
         managers.Add(typeof(TextDisplayManager), textDisplayManager);
+        managers.Add(typeof(MoneyManager), moneyManager);
 
         enemySpawner.OnWaveEnd += StartBuildPhase;
         healthManager.OnGameOver += HandleGameOver;

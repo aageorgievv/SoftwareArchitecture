@@ -2,13 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public abstract class TowerBase : MonoBehaviour
 {
+    public AttackBehaviour AttackBehaviour => attackBehaviour;
+
     [SerializeField]
-    private MonoBehaviour attackBehaviour;
+    private AttackBehaviour attackBehaviour;
 
     protected IAttackable attackable;
 
+    public int AttackRange => attackRange;
+    public int AttackCooldown => attackCooldown;
     public int MoneyCost => moneyCost;
 
     [SerializeField]

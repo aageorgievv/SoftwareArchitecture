@@ -16,9 +16,14 @@ public class TowerButton : MonoBehaviour
         button.onClick.AddListener(SelectTower);
     }
 
+    private void OnDestroy()
+    {
+        button.onClick.RemoveListener(SelectTower);
+    }
+
     private void SelectTower()
     {
         TowerSelectionManager towerSelectionManager = GameManager.GetManager<TowerSelectionManager>();
-        towerSelectionManager.SelectTower(towerPrefab);
+        towerSelectionManager.SelectTower(towerPrefab, towerPrefab.AttackBehaviour.ProjectilePrefab);
     }
 }

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class AttackBehaviour : MonoBehaviour, IAttackable
 {
+    public ProjectileBase ProjectilePrefab => projectilePrefab;
+
     [SerializeField]
-    private GameObject projectilePrefab;
+    private ProjectileBase projectilePrefab;
 
     public void Attack(Transform enemy)
     {
-        GameObject projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        ProjectileBase projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         ProjectileBase projectile = projectileObject.GetComponent<ProjectileBase>();
 
         if (projectile != null)

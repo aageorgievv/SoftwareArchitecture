@@ -7,12 +7,15 @@ public class TowerSelectionManager : MonoBehaviour, IManager
 {
     private TowerBase selectedTowerPrefab;
 
-    public event Action<TowerBase> OnTowerSelected;
+    private ProjectileBase selectedProjectilePrefab;
 
-    public void SelectTower(TowerBase towerPrefab)
+    public event Action<TowerBase, ProjectileBase> OnTowerSelected;
+
+    public void SelectTower(TowerBase towerPrefab, ProjectileBase projectilePrefab)
     {
         selectedTowerPrefab = towerPrefab;
-        OnTowerSelected?.Invoke(towerPrefab);
+        selectedProjectilePrefab = projectilePrefab;
+        OnTowerSelected?.Invoke(towerPrefab, projectilePrefab);
     }
 
     public TowerBase GetSelectedTower()

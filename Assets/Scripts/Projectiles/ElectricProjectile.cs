@@ -12,6 +12,12 @@ public class ElectricProjectile : ProjectileBase
     [SerializeField]
     private int chainCount = 2;
 
+    protected override void Start()
+    {
+        projectileType = EProjectileType.MultiTarget;
+        base.Start();
+    }
+
     protected override void OnHitEnemy(EnemyBase enemy)
     {
         enemy.Stun(stunDuration);

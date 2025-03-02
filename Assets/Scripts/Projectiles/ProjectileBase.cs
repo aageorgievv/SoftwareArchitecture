@@ -4,7 +4,19 @@ using UnityEngine;
 
 public abstract class ProjectileBase : MonoBehaviour
 {
+    public enum EProjectileType
+    {
+        None,
+        SingleTarget,
+        MultiTarget
+    }
     //To do: Make this abstract class so you can have many more projectile effects
+    public float Speed => speed;
+    public float Damage => damage;
+    public float LifeTime => lifeTime;
+
+    public EProjectileType ProjectileType => projectileType;
+
     [SerializeField]
     protected float speed = 10f;
     [SerializeField]
@@ -14,10 +26,17 @@ public abstract class ProjectileBase : MonoBehaviour
 
     protected Vector3 direction;
 
+    protected EProjectileType projectileType;
+
     public void Initialize(Vector3 direction)
     {
         this.direction = direction.normalized;
         Destroy(gameObject, lifeTime);
+    }
+
+    protected virtual void Start()
+    {
+
     }
 
     protected virtual void Update()

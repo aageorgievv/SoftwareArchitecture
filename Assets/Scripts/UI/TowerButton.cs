@@ -13,10 +13,14 @@ public class TowerButton : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
+    }
+
+    private void OnEnable()
+    {
         button.onClick.AddListener(SelectTower);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         button.onClick.RemoveListener(SelectTower);
     }

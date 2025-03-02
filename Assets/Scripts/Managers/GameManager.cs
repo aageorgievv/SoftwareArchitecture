@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private EnemySpawner enemySpawner;
+
+    [SerializeField]
+    private TowerSelectionManager selectionManager;
     [SerializeField]
     private float buildPhaseDuration = 10f;
 
@@ -51,9 +54,15 @@ public class GameManager : MonoBehaviour
             Debug.LogError("MoneyManager is null");
         }
 
+        if (selectionManager == null)
+        {
+            Debug.LogError("TowerSelectionManager is null");
+        }
+
         managers.Add(typeof(HealthManager), healthManager);
         managers.Add(typeof(TextDisplayManager), textDisplayManager);
         managers.Add(typeof(MoneyManager), moneyManager);
+        managers.Add(typeof(TowerSelectionManager), selectionManager);
 
         enemySpawner.OnWaveEnd += StartBuildPhase;
         healthManager.OnGameOver += HandleGameOver;

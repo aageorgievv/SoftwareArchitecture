@@ -7,6 +7,7 @@ public class MoneyManager : MonoBehaviour, IManager
 {
     public event Action<int> OnMoneyChanged;
 
+    [SerializeField]
     private int money = 500;
 
     public int GetMoney()
@@ -25,9 +26,6 @@ public class MoneyManager : MonoBehaviour, IManager
         {
             money -= amount;
             OnMoneyChanged?.Invoke(money);
-        } else
-        {
-            Debug.Log("You broke! Money lacking!");
         }
     }
 

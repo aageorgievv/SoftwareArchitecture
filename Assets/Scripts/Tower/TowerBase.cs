@@ -9,10 +9,14 @@ public abstract class TowerBase : MonoBehaviour
 
     protected IAttackable attackable;
 
+    public int MoneyCost => moneyCost;
+
     [SerializeField]
     protected int attackRange = 10;
     [SerializeField]
     protected int attackCooldown = 2;
+    [SerializeField]
+    protected int moneyCost;
 
     protected float lastAttackTime = float.MinValue;
 

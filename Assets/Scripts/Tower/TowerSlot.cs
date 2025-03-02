@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerSlot : MonoBehaviour
 {
-    private bool isOccupied = false;
+    public bool isOccupied { get; private set; } = false;
 
     public void OccupySlot()
     {

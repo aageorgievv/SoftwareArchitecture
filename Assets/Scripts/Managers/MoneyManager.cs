@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ScoreManager
+/*public class ScoreManager
 {
     public static ScoreManager Instance => _instance ??= new ScoreManager();
     private static ScoreManager _instance;
@@ -18,14 +18,13 @@ public class ScoreManager
             throw new Exception("Instance already exists");  
         }
     }
-}
-
-
-
+}*/
 
 public class MoneyManager : MonoBehaviour, IManager
 {
     public event Action<int> OnMoneyChanged;
+
+     
 
     [SerializeField]
     private int money = 500;

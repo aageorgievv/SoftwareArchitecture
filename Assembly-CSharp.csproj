@@ -60,6 +60,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.44f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\UI\UpgradeButtonHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scripts\Managers\TextDisplayManager.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Assets\Scripts\Managers\MoneyManager.cs" />
     <Compile Include="Assets\Scripts\Projectiles\ElectricProjectile.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerPlacement.cs" />
+    <Compile Include="Assets\Scripts\Tower\UpgradeTower.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBase.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerController.cs" />

@@ -71,4 +71,11 @@ public abstract class TowerBase : MonoBehaviour
 
         return closestEnemy;
     }
+
+    public void UpgradeStats(int attackRangeAmount, int attackCooldownAmount)
+    {
+        attackRange += attackRangeAmount;
+        attackCooldown = Mathf.Max(1, attackCooldown - attackCooldownAmount);
+        Debug.Log($"Tower upgraded! New Range: {attackRange}, New Cooldown: {attackCooldown}");
+    }
 }

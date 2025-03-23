@@ -10,7 +10,8 @@ public class UpgradeTower : MonoBehaviour
 
     [SerializeField] private TowerBase upgradedTowerPrefab;
     [SerializeField] private int upgradeCost;
-
+    [SerializeField] private int upgradeRange;
+    [SerializeField] private int upgradeAttackCooldown;
     void Start()
     {
         
@@ -43,6 +44,7 @@ public class UpgradeTower : MonoBehaviour
         Quaternion currentRotation = transform.rotation;
 
         TowerBase upgradedTower = Instantiate(upgradedTowerPrefab, currentPosition, currentRotation);
+        upgradedTower.UpgradeStats(upgradeRange, upgradeAttackCooldown);
         OnTowerUpgraded?.Invoke(upgradedTower);
         Destroy(gameObject);
     }

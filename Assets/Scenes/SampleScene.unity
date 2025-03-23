@@ -936,7 +936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &331214863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3102,6 +3102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradedTowerPrefab: {fileID: 6124802738297660459, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
   upgradeCost: 50
+  upgradeRange: 2
+  upgradeAttackCooldown: 2
 --- !u!1 &1552140226
 GameObject:
   m_ObjectHideFlags: 0
@@ -4441,7 +4443,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradedTowerPrefab: {fileID: 6124802738297660459, guid: 7af1bd08f4206f74698cb7c93e117d87, type: 3}
-  upgradeCost: 1000
+  upgradeCost: 100
+  upgradeRange: 2
+  upgradeAttackCooldown: 2
 --- !u!1 &2128883112
 GameObject:
   m_ObjectHideFlags: 0

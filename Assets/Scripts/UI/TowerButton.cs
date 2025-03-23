@@ -28,6 +28,6 @@ public class TowerButton : MonoBehaviour
     private void SelectTower()
     {
         TowerSelectionManager towerSelectionManager = GameManager.GetManager<TowerSelectionManager>();
-        towerSelectionManager.SelectTower(towerPrefab, towerPrefab.AttackBehaviour.ProjectilePrefab);
+        towerSelectionManager.SelectTowerToBuy(towerPrefab, towerPrefab.AttackBehaviour.ProjectilePrefab);
     }
 }

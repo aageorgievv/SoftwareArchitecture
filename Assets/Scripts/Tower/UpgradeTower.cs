@@ -6,6 +6,7 @@ using UnityEngine;
 public class UpgradeTower : MonoBehaviour
 {
     public event Action<TowerBase> OnTowerUpgraded;
+    public int UpgradeCost => upgradeCost;
 
     [SerializeField] private TowerBase upgradedTowerPrefab;
     [SerializeField] private int upgradeCost;

@@ -19,6 +19,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     [SerializeField]
     protected bool canBeStunned = true;
+    [SerializeField] bool canTakeDamage = true;
     private bool isStunned = false;
 
     private IMovable movable;
@@ -76,7 +77,10 @@ public abstract class EnemyBase : MonoBehaviour
 
     public virtual void TakeDamage(float amount)
     {
-        health -= amount;
+        if(canTakeDamage)
+        {
+            health -= amount;
+        }
         //Debug.Log($"Health remaining {health}, enemy's worth {money}");
 
         if (health <= 0)
@@ -124,7 +128,7 @@ public abstract class EnemyBase : MonoBehaviour
     {
         isStunned = true;
         moveBehaviour.IsAgentStopped(true);
-        Debug.Log($"{gameObject.name} is stunned for {duration} seconds.");
+        //Debug.Log($"{gameObject.name} is stunned for {duration} seconds.");
         yield return new WaitForSeconds(duration);
         isStunned = false;
         moveBehaviour.IsAgentStopped(false);

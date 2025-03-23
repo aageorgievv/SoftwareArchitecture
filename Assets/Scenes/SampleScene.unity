@@ -936,7 +936,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &331214863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1305,7 +1305,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Upgrade
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2013,6 +2013,7 @@ GameObject:
   - component: {fileID: 956873883}
   - component: {fileID: 956873882}
   - component: {fileID: 956873881}
+  - component: {fileID: 956873884}
   m_Layer: 5
   m_Name: Upgrade
   m_TagString: Untagged
@@ -2122,6 +2123,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 956873879}
   m_CullTransparentMesh: 1
+--- !u!114 &956873884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 956873879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99451e402558b134fb75674a1c8a16e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeButton: {fileID: 956873881}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -4064,7 +4078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8987c5895749064fbde567609ff4285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 150
+  money: 200
 --- !u!4 &1914648272
 Transform:
   m_ObjectHideFlags: 0
@@ -4349,6 +4363,85 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2120702329
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1256383129822107827, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+      propertyPath: m_Name
+      value: TowerTest 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094017727904623315, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094017727904623315, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.232
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094017727904623315, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094017727904623315, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094017727904623315, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094017727904623315, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094017727904623315, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094017727904623315, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094017727904623315, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3094017727904623315, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1256383129822107827, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2120702331}
+  m_SourcePrefab: {fileID: 100100000, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+--- !u!1 &2120702330 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1256383129822107827, guid: e1e8b9d7ef7fe1e4f8f06cb1372fcdb3, type: 3}
+  m_PrefabInstance: {fileID: 2120702329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2120702331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2120702330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac9922c66452d2e4eb9064632cce2050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradedTowerPrefab: {fileID: 6124802738297660459, guid: 7af1bd08f4206f74698cb7c93e117d87, type: 3}
+  upgradeCost: 1000
 --- !u!1 &2128883112
 GameObject:
   m_ObjectHideFlags: 0
@@ -4496,6 +4589,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TowerTest
       objectReference: {fileID: 0}
+    - target: {fileID: 1256383129822107827, guid: 7af1bd08f4206f74698cb7c93e117d87, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3094017727904623315, guid: 7af1bd08f4206f74698cb7c93e117d87, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.55
@@ -4563,3 +4660,4 @@ SceneRoots:
   - {fileID: 2021366700}
   - {fileID: 942637159}
   - {fileID: 79503646}
+  - {fileID: 2120702329}

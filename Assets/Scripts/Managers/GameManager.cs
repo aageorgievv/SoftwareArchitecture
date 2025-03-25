@@ -28,12 +28,12 @@ public class GameManager : MonoBehaviour
     private MoneyManager moneyManager;
 
     [SerializeField]
-    private EnemySpawner enemySpawner;
-
-    [SerializeField]
     private TowerSelectionManager selectionManager;
     [SerializeField]
     private float buildPhaseDuration = 10f;
+
+    [SerializeField]
+    private EnemySpawner enemySpawner;
 
     private static Dictionary<Type, IManager> managers = new Dictionary<Type, IManager>();
 

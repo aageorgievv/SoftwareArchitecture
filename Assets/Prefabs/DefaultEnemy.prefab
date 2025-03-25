@@ -160,4 +160,5 @@ MonoBehaviour:
   money: 100
   damage: 0
   canBeStunned: 1
+  canTakeDamage: 1
   moveBehaviour: {fileID: 8530804222398655364}

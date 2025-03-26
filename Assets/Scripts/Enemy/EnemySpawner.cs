@@ -21,7 +21,7 @@ public class EnemySpawner : MonoBehaviour
     private int currentWaveIndex = 0;
 
     private int activeEnemies = 0;
-
+     
     void Start()
     {
         

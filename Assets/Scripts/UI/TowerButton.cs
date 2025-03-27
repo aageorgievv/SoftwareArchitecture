@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine.UI;
 
 public class TowerButton : MonoBehaviour
 {
+    public event Action OnTowerBought;
+
     [SerializeField]
     private TowerBase towerPrefab;
 
@@ -29,5 +32,6 @@ public class TowerButton : MonoBehaviour
     {
         TowerSelectionManager towerSelectionManager = GameManager.GetManager<TowerSelectionManager>();
         towerSelectionManager.SelectTowerToBuy(towerPrefab, towerPrefab.AttackBehaviour.ProjectilePrefab);
+        OnTowerBought?.Invoke();
     }
 }

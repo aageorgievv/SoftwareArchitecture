@@ -18000,6 +18000,8 @@ MonoBehaviour:
   placementLayer:
     serializedVersion: 2
     m_Bits: 64
+  placementIndicatorPrefab: {fileID: 919132149155446097, guid: d3aee06f3359c8d43a25b80db442a73f, type: 3}
+  towerButton: {fileID: 1698491196}
 --- !u!4 &1518624948
 Transform:
   m_ObjectHideFlags: 0
@@ -18808,7 +18810,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 21366aa3f76df9f4cbc31eb2b7df6300, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

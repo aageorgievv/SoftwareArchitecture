@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\UI\UpgradeButtonHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+    <Compile Include="Assets\Scripts\UI\UITracker.cs" />
     <Compile Include="Assets\Scripts\Managers\TextDisplayManager.cs" />
     <Compile Include="Assets\Scripts\Tower\TowerBase.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />

@@ -6,12 +6,13 @@ using UnityEngine;
 public class HealthManager : MonoBehaviour, IManager
 {
     public event Action OnGameOver;
+    public event Action<int> OnHealthChanged;
 
     [SerializeField]
     private int maxHealth = 10;
     private int currentHealth;
 
-    void Start()
+    void Awake()
     {
         currentHealth = maxHealth;
     }
@@ -25,6 +26,7 @@ public class HealthManager : MonoBehaviour, IManager
     {
         currentHealth--;
         Debug.Log($"Health: {currentHealth}");
+        OnHealthChanged?.Invoke(currentHealth);
 
         if (currentHealth <= 0)
         {

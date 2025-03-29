@@ -386,6 +386,7 @@
 "Assets/Scripts/Tower/UpgradeTower.cs"
 "Assets/Scripts/UI/SelectionUI.cs"
 "Assets/Scripts/UI/TowerButton.cs"
+"Assets/Scripts/UI/UITracker.cs"
 "Assets/Scripts/UI/UpgradeButtonHandler.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"

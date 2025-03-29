@@ -8,7 +8,7 @@ public interface IManager
 
 }
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IManager
 {
     private enum EGameState
     {
@@ -37,6 +37,12 @@ public class GameManager : MonoBehaviour
 
     private static Dictionary<Type, IManager> managers = new Dictionary<Type, IManager>();
 
+    private int waveNumber = 1;
+    private float buildPhaseTimeLeft;
+
+    public event Action<int> OnWaveChanged;
+    public event Action<float> OnBuildPhaseTimeChanged;
+
     private void Awake()
     {
         if(healthManager == null)
@@ -59,6 +65,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("TowerSelectionManager is null");
         }
 
+        managers.Add(typeof(GameManager), this);
         managers.Add(typeof(HealthManager), healthManager);
         managers.Add(typeof(TextDisplayManager), textDisplayManager);
         managers.Add(typeof(MoneyManager), moneyManager);
@@ -93,7 +100,15 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator BuildPhaseCountDown()
     {
-        yield return new WaitForSeconds(buildPhaseDuration);
+        buildPhaseTimeLeft = buildPhaseDuration;
+
+        while (buildPhaseTimeLeft > 0)
+        {
+            OnBuildPhaseTimeChanged?.Invoke(buildPhaseTimeLeft);
+            yield return new WaitForSeconds(1f);
+            buildPhaseTimeLeft--;
+        }
+
         StartCombatPhase();
     }
 
@@ -102,10 +117,22 @@ public class GameManager : MonoBehaviour
         currentGameState = EGameState.CombatPhase;
         Debug.Log("GameState: CombatPhase");
         enemySpawner.StartNextWave();
+        waveNumber++;
+        OnWaveChanged?.Invoke(waveNumber);
     }
 
     private void HandleGameOver()
     {
         Debug.Log("Game Over!");
+    }
+
+    public int GetWaveNumber()
+    {
+        return waveNumber;
+    }
+
+    public float GetBuildPhaseTimeLeft()
+    {
+        return buildPhaseTimeLeft;
     }
 }

@@ -8,14 +8,13 @@ public abstract class EnemyBase : MonoBehaviour
 {
     public static event Action<Vector3, int> OnEnemyDefeated;
 
-    [SerializeField]
-    protected float health;
-    [SerializeField]
-    protected float speed;
-    [SerializeField]
-    protected int money;
-    [SerializeField]
-    protected int damage; // To Do
+    public event Action OnHealthChanged;
+
+    [SerializeField] protected float maxHealth = 100f;
+
+    [SerializeField] protected float health;
+    [SerializeField] protected float speed;
+    [SerializeField] protected int money;
 
     [SerializeField]
     protected bool canBeStunned = true;
@@ -31,6 +30,8 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Start()
     {
+        health = maxHealth;
+
         if (moveBehaviour != null)
         {
             movable = moveBehaviour as IMovable;
@@ -80,6 +81,7 @@ public abstract class EnemyBase : MonoBehaviour
         if(canTakeDamage)
         {
             health -= amount;
+            OnHealthChanged?.Invoke();
         }
         //Debug.Log($"Health remaining {health}, enemy's worth {money}");
 
@@ -137,5 +139,10 @@ public abstract class EnemyBase : MonoBehaviour
     public void SetSpawner(EnemySpawner spawner)
     {
         enemySpawner = spawner;
+    }
+
+    public float GetHealthPercentage()
+    {
+        return health / maxHealth;
     }
 }

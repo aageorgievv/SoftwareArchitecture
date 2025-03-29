@@ -384,6 +384,7 @@
 "Assets/Scripts/Tower/TowerSlot.cs"
 "Assets/Scripts/Tower/TowerUpgrade.cs"
 "Assets/Scripts/Tower/UpgradeTower.cs"
+"Assets/Scripts/UI/EnemyHealthUI.cs"
 "Assets/Scripts/UI/SelectionUI.cs"
 "Assets/Scripts/UI/TowerButton.cs"
 "Assets/Scripts/UI/UITracker.cs"

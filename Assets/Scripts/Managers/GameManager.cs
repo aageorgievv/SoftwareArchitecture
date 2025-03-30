@@ -35,6 +35,8 @@ public class GameManager : MonoBehaviour, IManager
     [SerializeField]
     private EnemySpawner enemySpawner;
 
+    [SerializeField] private WinScreenUI winScreenUI;
+
     private static Dictionary<Type, IManager> managers = new Dictionary<Type, IManager>();
 
     private int waveNumber = 1;
@@ -42,6 +44,8 @@ public class GameManager : MonoBehaviour, IManager
 
     public event Action<int> OnWaveChanged;
     public event Action<float> OnBuildPhaseTimeChanged;
+    public event Action OnGameOverEvent;
+
 
     private void Awake()
     {
@@ -73,6 +77,7 @@ public class GameManager : MonoBehaviour, IManager
 
         enemySpawner.OnWaveEnd += StartBuildPhase;
         healthManager.OnGameOver += HandleGameOver;
+        enemySpawner.OnGameWin += HandleGameWin;
     }
 
     public static T GetManager<T>() where T : IManager
@@ -89,6 +94,7 @@ public class GameManager : MonoBehaviour, IManager
     {
         enemySpawner.OnWaveEnd -= StartBuildPhase;
         healthManager.OnGameOver -= HandleGameOver;
+        enemySpawner.OnGameWin -= HandleGameWin;
     }
 
     private void StartBuildPhase()
@@ -123,7 +129,13 @@ public class GameManager : MonoBehaviour, IManager
 
     private void HandleGameOver()
     {
-        Debug.Log("Game Over!");
+        OnGameOverEvent?.Invoke();
+    }
+
+    private void HandleGameWin()
+    {
+        Debug.Log("You Win!");
+        winScreenUI.ShowWinScreen();
     }
 
     public int GetWaveNumber()

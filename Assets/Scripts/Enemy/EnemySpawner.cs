@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     // Fires an event when a wave ends
 
     public event Action OnWaveEnd;
+    public event Action OnGameWin;
 
     [SerializeField]
     private List<WaveConfig> waves;
@@ -91,6 +92,12 @@ public class EnemySpawner : MonoBehaviour
         {
             OnWaveEnd?.Invoke();
             Debug.Log("Wave ended");
+
+            if (currentWaveIndex >= waves.Count)
+            {
+                OnGameWin?.Invoke();
+                Debug.Log("Game Won!");
+            }
         }
     }
 }

@@ -118,6 +118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackBehaviour: {fileID: 8901660548625118741}
-  attackRange: 10
+  attackRange: 2
   attackCooldown: 4
   moneyCost: 0

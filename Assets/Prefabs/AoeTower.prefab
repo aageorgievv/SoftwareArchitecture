@@ -65,13 +65,13 @@ PrefabInstance:
       addedObject: {fileID: 3209843684183840217}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 23435f1f66fb2b446a7670c81310144e, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 475728330337337655}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 23435f1f66fb2b446a7670c81310144e, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2395845478043637626}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 23435f1f66fb2b446a7670c81310144e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1348609681653068318}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 23435f1f66fb2b446a7670c81310144e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 475728330337337655}
   m_SourcePrefab: {fileID: 100100000, guid: 23435f1f66fb2b446a7670c81310144e, type: 3}
 --- !u!1 &7063521645890515208 stripped
 GameObject:
@@ -99,6 +99,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.97599995, y: 1.0445, z: 0.97599995}
   m_Center: {x: 0, y: 0.52225, z: 0}
+--- !u!114 &475728330337337655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7063521645890515208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ca2aa698f811b48b09dcbf06efbb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 3454720755150057376, guid: edc0b83f54c89a3409b81b3e3eaaa754, type: 3}
 --- !u!114 &2395845478043637626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,16 +144,3 @@ MonoBehaviour:
   upgradeCost: 150
   upgradeRange: 2
   upgradeAttackCooldown: 2
---- !u!114 &475728330337337655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7063521645890515208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ca2aa698f811b48b09dcbf06efbb3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 3454720755150057376, guid: edc0b83f54c89a3409b81b3e3eaaa754, type: 3}

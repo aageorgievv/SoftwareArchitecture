@@ -13,7 +13,7 @@ using UnityEngine.UI;
 /// - Unsubscribes from events when the object is destroyed.
 /// </remarks>
 
-public class UITracker : MonoBehaviour
+public class  UITracker : MonoBehaviour
 {
     [SerializeField] private TMP_Text healthText;
     [SerializeField] private TMP_Text waveText;
@@ -28,7 +28,7 @@ public class UITracker : MonoBehaviour
     {
         moneyManager = GameManager.GetManager<MoneyManager>();
         healthManager = GameManager.GetManager<HealthManager>();
-        gameManager = GameManager.GetManager<GameManager>();
+        gameManager = GameManager.GetManager<GameManager>(); 
         moneyManager.OnMoneyChanged += UpdateMoneyText;
         healthManager.OnHealthChanged += UpdateHealthText;
         gameManager.OnWaveChanged += UpdateWaveText;

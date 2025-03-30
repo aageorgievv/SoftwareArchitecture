@@ -3,6 +3,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Manages the display of floating text when enemies are defeated.
+/// </summary>
+/// <remarks>
+/// - Implements `IManager` for global access.
+/// - Listens for `OnEnemyDefeated` event from `EnemyBase` and spawns a floating text prefab.
+/// - Displays earned money and fades/moves the text before destroying it.
+/// - Ensures text rotates toward the camera for visibility.
+/// - Uses a coroutine (`FadeAndMoveText()`) for smooth movement and fading.
+/// </remarks>
+
 public class TextDisplayManager : MonoBehaviour, IManager
 {
     [SerializeField]

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6553031703996716843}
   - component: {fileID: 497714174388016362}
   - component: {fileID: 2754070426370789695}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ElectricProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  damage: 100
+  damage: 50
   lifeTime: 5
   stunDuration: 2
   chainAttackRange: 3

@@ -7,7 +7,7 @@ public class TowerController : MonoBehaviour
     [SerializeField]
     private MonoBehaviour attackBehaviour;
 
-    private IAttackable attackable;
+    private Attackable attackable;
 
     [SerializeField]
     private int attackRange = 10;
@@ -18,9 +18,9 @@ public class TowerController : MonoBehaviour
 
     void Start()
     {
-        if (attackBehaviour is IAttackable)
+        if (attackBehaviour is Attackable)
         {
-            attackable = attackBehaviour as IAttackable;
+            attackable = attackBehaviour as Attackable;
         }
         else
         {

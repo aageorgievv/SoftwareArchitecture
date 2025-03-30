@@ -3,28 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-/*public class ScoreManager
-{
-    public static ScoreManager Instance => _instance ??= new ScoreManager();
-    private static ScoreManager _instance;
-
-    public int Score { get; set; }
-
-    protected ScoreManager()
-    {
-        if (_instance != null)
-        {
-            throw new Exception("Instance already exists");  
-        }
-    }
-}*/
+/// <summary>
+/// Manages the player's in-game currency.
+/// </summary>
+/// <remarks>
+/// - Implements `IManager` for global access.
+/// - Tracks available money and triggers `OnMoneyChanged` event when updated.
+/// - Provides methods to check affordability (`CanAfford()`), spend (`SpendMoney()`), and earn (`AddMoney()`) money.
+/// - Ensures that money is only deducted if the player can afford the cost.
+/// </remarks>
 
 public class MoneyManager : MonoBehaviour, IManager
 {
     public event Action<int> OnMoneyChanged;
-
-     
 
     [SerializeField]
     private int money = 500;

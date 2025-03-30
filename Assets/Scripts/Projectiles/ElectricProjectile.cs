@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A type of projectile that deals damage and stuns enemies, with the ability to chain to nearby enemies.
+/// </summary>
+/// <remarks>
+/// - Inherits from <see cref="ProjectileBase"/> and overrides the behavior for hitting enemies.
+/// - Stuns the first enemy and damages it, then chains to nearby enemies to stun and damage them.
+/// - Uses the specified range and number of chain attacks for chaining to additional enemies.
+/// </remarks>
+
 public class ElectricProjectile : ProjectileBase
 {
     [SerializeField]

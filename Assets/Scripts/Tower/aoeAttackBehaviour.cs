@@ -1,14 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class AoeAttackBehaviour : MonoBehaviour, IAttackable
+/// <summary>
+/// A class that defines an area-of-effect (AOE) attack behavior for towers.
+/// </summary>
+/// <remarks>
+/// - Instantiates multiple projectiles in predefined directions (forward, back, left, right).
+/// - Each projectile is initialized to move in a different direction from the tower's position.
+/// - This class is intended for attacks that hit enemies in multiple directions simultaneously.
+/// </remarks>
+
+
+public class AoeAttackBehaviour : Attackable
 {
-    public ProjectileBase ProjectilePrefab => projectilePrefab;
-
-    [SerializeField]
-    private ProjectileBase projectilePrefab;
-
     private Vector3[] directions = new Vector3[]
 {
         Vector3.forward,
@@ -17,17 +20,13 @@ public class AoeAttackBehaviour : MonoBehaviour, IAttackable
         Vector3.right
 };
 
-    public void Attack(Transform enemy)
+    public override void Attack(Transform enemy)
     {
-        ProjectileBase projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-        ProjectileBase projectile = projectileObject.GetComponent<ProjectileBase>();
-
-        if (projectile != null)
+        foreach (Vector3 dir in directions)
         {
-            foreach (Vector3 dir in directions)
-            {
-                projectile.Initialize(dir);
-            }
+            ProjectileBase projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+            ProjectileBase projectile = projectileObject.GetComponent<ProjectileBase>();
+            projectile.Initialize(dir);
         }
     }
 }

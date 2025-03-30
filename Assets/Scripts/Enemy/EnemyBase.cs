@@ -4,6 +4,18 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using UnityEngine;
 
+/// <summary>
+/// Base class for enemy behavior in a Unity tower defense game.
+/// Handles movement, health, damage, stunning, and defeat mechanics.
+/// </summary>
+/// <remarks>
+/// - Implements core enemy functionality, including taking damage, dying, and handling movement.
+/// - Uses `MoveBehaviour` to control movement and subscribes to its destination-reached event.
+/// - Calls `OnEnemyDefeated` when defeated, rewarding the player with money.
+/// - Supports stunning with a coroutine-based effect.
+/// - Interacts with `MoneyManager` and `HealthManager` to update game state.
+/// </remarks>
+
 public abstract class EnemyBase : MonoBehaviour
 {
     public static event Action<Vector3, int> OnEnemyDefeated;
@@ -27,10 +39,13 @@ public abstract class EnemyBase : MonoBehaviour
     protected MoveBehaviour moveBehaviour;
 
     private EnemySpawner enemySpawner;
+    private MoneyManager moneyManager;
 
     protected virtual void Start()
     {
         health = maxHealth;
+
+        moneyManager = GameManager.GetManager<MoneyManager>();
 
         if (moveBehaviour != null)
         {
@@ -104,6 +119,8 @@ public abstract class EnemyBase : MonoBehaviour
         {
             Debug.LogError("EnemySpawner is null");
         }
+
+        moneyManager.AddMoney(money);
     }
 
     protected virtual void HandleDestinationReached(MoveBehaviour move)

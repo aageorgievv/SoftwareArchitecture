@@ -2,6 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>
+/// Manages the overall game state, including build and combat phases.
+/// </summary>
+/// <remarks>
+/// - Implements `IManager` and provides a static manager lookup system.
+/// - Handles game state transitions between `BuildingPhase` and `CombatPhase`.
+/// - Manages dependencies like `HealthManager`, `MoneyManager`, and `EnemySpawner`.
+/// - Handles UI interactions such as time scaling and starting waves.
+/// - Listens for game events like wave completion, game over, and game win.
+/// </remarks>
 
 public interface IManager
 {
@@ -10,13 +22,14 @@ public interface IManager
 
 public class GameManager : MonoBehaviour, IManager
 {
-    private enum EGameState
+    public enum EGameState
     {
         None,
         BuildingPhase,
         CombatPhase
     }
-    private EGameState currentGameState = EGameState.None;
+
+    public EGameState CurrentGameState { get; private set; } = EGameState.None;
 
     [SerializeField]
     private HealthManager healthManager;
@@ -35,6 +48,10 @@ public class GameManager : MonoBehaviour, IManager
     [SerializeField]
     private EnemySpawner enemySpawner;
 
+    [SerializeField]
+    private Slider timeScaleSlider;
+
+    [SerializeField] private Button startButton;
     [SerializeField] private WinScreenUI winScreenUI;
 
     private static Dictionary<Type, IManager> managers = new Dictionary<Type, IManager>();
@@ -69,6 +86,17 @@ public class GameManager : MonoBehaviour, IManager
             Debug.LogError("TowerSelectionManager is null");
         }
 
+        if (timeScaleSlider == null)
+        {
+            Debug.LogError($"{nameof(timeScaleSlider)} is null");
+        }
+
+        if (startButton == null)
+        {
+            Debug.LogError($"{nameof(startButton)} is null");
+        }
+
+        managers.Clear();
         managers.Add(typeof(GameManager), this);
         managers.Add(typeof(HealthManager), healthManager);
         managers.Add(typeof(TextDisplayManager), textDisplayManager);
@@ -78,6 +106,11 @@ public class GameManager : MonoBehaviour, IManager
         enemySpawner.OnWaveEnd += StartBuildPhase;
         healthManager.OnGameOver += HandleGameOver;
         enemySpawner.OnGameWin += HandleGameWin;
+
+        startButton.onClick.AddListener(HandleStartButtonClicked);
+        timeScaleSlider.onValueChanged.AddListener(HandleTimeScaleValueChanged);
+
+        Time.timeScale = 1f; // reset timescale
     }
 
     public static T GetManager<T>() where T : IManager
@@ -85,21 +118,18 @@ public class GameManager : MonoBehaviour, IManager
         return (T)managers[typeof(T)];
     }
 
-    void Start()
-    {
-        StartBuildPhase();
-    }
-
     private void OnDestroy()
     {
         enemySpawner.OnWaveEnd -= StartBuildPhase;
         healthManager.OnGameOver -= HandleGameOver;
         enemySpawner.OnGameWin -= HandleGameWin;
+        timeScaleSlider.onValueChanged.RemoveListener(HandleTimeScaleValueChanged);
+        startButton.onClick.RemoveListener(HandleStartButtonClicked);
     }
 
     private void StartBuildPhase()
     {
-        currentGameState = EGameState.BuildingPhase;
+        CurrentGameState = EGameState.BuildingPhase;
         Debug.Log("GameState: BuildPhase");
         StartCoroutine(BuildPhaseCountDown());
     }
@@ -120,7 +150,7 @@ public class GameManager : MonoBehaviour, IManager
 
     private void StartCombatPhase()
     {
-        currentGameState = EGameState.CombatPhase;
+        CurrentGameState = EGameState.CombatPhase;
         Debug.Log("GameState: CombatPhase");
         enemySpawner.StartNextWave();
         waveNumber++;
@@ -146,5 +176,15 @@ public class GameManager : MonoBehaviour, IManager
     public float GetBuildPhaseTimeLeft()
     {
         return buildPhaseTimeLeft;
+    }
+    private void HandleStartButtonClicked()
+    {
+        StartBuildPhase();
+    }
+
+    private void HandleTimeScaleValueChanged(float value)
+    {
+        Time.timeScale = value;
+        Debug.Log($"TimeScale: {value}");
     }
 }

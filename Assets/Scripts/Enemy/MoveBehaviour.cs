@@ -6,6 +6,17 @@ using UnityEngine;
 using UnityEngine.AI;
 using static UnityEditor.FilePathAttribute;
 
+/// <summary>
+/// Controls enemy movement using a NavMeshAgent and manages travel points.
+/// </summary>
+/// <remarks>
+/// - Implements `IMovable` to provide movement functionality.
+/// - Moves the enemy along predefined travel points.
+/// - Invokes `OnDestinationReached` when the final destination is reached.
+/// - Supports speed adjustment and the ability to stop the agent.
+/// - Ensures `NavMeshAgent` is properly assigned and utilized.
+/// </remarks>
+
 [RequireComponent(typeof(NavMeshAgent))]
 public class MoveBehaviour : MonoBehaviour, IMovable
 {

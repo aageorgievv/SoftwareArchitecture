@@ -4,6 +4,15 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Tracks and updates the UI elements related to the player's health, wave number, money, and build phase timer.
+/// </summary>
+/// <remarks>
+/// - Subscribes to events from `MoneyManager`, `HealthManager`, and `GameManager` to update UI.
+/// - Updates the health, money, wave, and build phase timer text in the UI.
+/// - Unsubscribes from events when the object is destroyed.
+/// </remarks>
+
 public class UITracker : MonoBehaviour
 {
     [SerializeField] private TMP_Text healthText;

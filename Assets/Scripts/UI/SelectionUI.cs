@@ -5,8 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Class Summary
+/// Manages the display of the tower selection UI, showing the details of the selected tower and its projectile.
 /// </summary>
+/// <remarks>
+/// - Listens for tower selection from the `TowerSelectionManager`.
+/// - Updates the UI with tower details like cost, damage, range, attack speed, and attack type.
+/// - Displays the UI panel when a tower is selected.
+/// </remarks>
+/// 
 public class SelectionUI : MonoBehaviour
 {
     [SerializeField]

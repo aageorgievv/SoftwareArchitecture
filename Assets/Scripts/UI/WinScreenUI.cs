@@ -2,6 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Manages the win screen UI and its interactions.
+/// </summary>
+/// <remarks>
+/// - Controls visibility of the win screen.
+/// - Provides buttons for restarting the game and quitting.
+/// - Listens for button clicks to reload the scene or exit the application.
+/// </remarks>
+
+
 public class WinScreenUI : MonoBehaviour
 {
     [SerializeField] private GameObject winScreen;

@@ -3,12 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Manages enemy wave spawning and tracks active enemies.
+/// </summary>
+/// <remarks>
+/// - Spawns enemies in waves based on `WaveConfig` data.
+/// - Uses coroutines to control enemy spawning over time.
+/// - Assigns travel points and behaviors to spawned enemies.
+/// - Triggers `OnWaveEnd` when all enemies in a wave are defeated.
+/// - Triggers `OnGameWin` when all waves are completed.
+/// </remarks>
+
 public class EnemySpawner : MonoBehaviour
 {
-    // Spawns enemies based on WaveConfig(Scriptable Object - Containing EnemySet info) 
-    //Controls delay between enemy spawns
-    // Fires an event when a wave ends
-
     public event Action OnWaveEnd;
     public event Action OnGameWin;
 

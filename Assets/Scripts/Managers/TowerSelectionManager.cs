@@ -4,6 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Manages tower selection for purchasing and upgrading in the game.
+/// </summary>
+/// <remarks>
+/// - Implements `IManager` for global access.
+/// - Tracks the selected tower and projectile prefabs for placement.
+/// - Fires `OnTowerSelected` event when a new tower is chosen for purchase.
+/// - Handles selecting existing towers in the scene for upgrades.
+/// - Uses raycasting to detect clicked towers while avoiding UI clicks.
+/// </remarks>
+
 public class TowerSelectionManager : MonoBehaviour, IManager
 {
     public event Action<TowerBase, ProjectileBase> OnTowerSelected;

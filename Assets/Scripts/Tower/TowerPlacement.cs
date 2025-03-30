@@ -2,12 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A class responsible for handling tower placement during the building phase of the game.
+/// </summary>
+/// <remarks>
+/// - Displays a placement indicator when hovering over valid tower slots.
+/// - Allows the player to place or sell towers using the left and right mouse buttons.
+/// - Validates placement conditions such as whether the slot is unoccupied and if the player has enough money.
+/// - The class listens for tower selection events and updates the placement indicator accordingly.
+/// </remarks>
+
 public class TowerPlacement : MonoBehaviour
 {
+    [SerializeField] private LayerMask towerLayer;
     [SerializeField] private LayerMask placementLayer;
     [SerializeField] private GameObject placementIndicatorPrefab;
     [SerializeField] private TowerButton towerButton;
     private float yOffset = 0.2f;
+    private GameManager gameManager;
     private MoneyManager moneyManager;
     private TowerSelectionManager selectionManager;
     private GameObject placementIndicatorInstance;
@@ -17,6 +29,7 @@ public class TowerPlacement : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameManager.GetManager<GameManager>();
         moneyManager = GameManager.GetManager<MoneyManager>();
         selectionManager = GameManager.GetManager<TowerSelectionManager>();
 
@@ -36,9 +49,14 @@ public class TowerPlacement : MonoBehaviour
             HandleHoverEffect();
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && gameManager.CurrentGameState == GameManager.EGameState.BuildingPhase)
         {
             PlaceTower();
+        }
+
+        if (Input.GetMouseButtonDown(1) && gameManager.CurrentGameState == GameManager.EGameState.BuildingPhase)
+        {
+            SellTower();
         }
     }
 
@@ -71,6 +89,18 @@ public class TowerPlacement : MonoBehaviour
             {
                 Debug.Log("Cannot Place!");
             }
+        }
+    }
+
+    private void SellTower()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, towerLayer))
+        {
+            TowerBase tower = hit.collider.GetComponent<TowerBase>();
+            moneyManager.AddMoney(tower.MoneyCost);
+            Destroy(tower.gameObject);
         }
     }
 

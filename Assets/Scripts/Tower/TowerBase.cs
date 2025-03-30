@@ -1,17 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A base class for all tower types in the game, providing functionality for attacking enemies and upgrading tower stats.
+/// </summary>
+/// <remarks>
+/// - Provides basic attack behavior with configurable attack range, cooldown, and cost.
+/// - Automatically attacks the closest enemy within range when the cooldown period has passed.
+/// - Can be upgraded to increase attack range and decrease attack cooldown.
+/// </remarks>
 
 
 public abstract class TowerBase : MonoBehaviour
 {
-    public AttackBehaviour AttackBehaviour => attackBehaviour;
+    public Attackable AttackBehaviour => attackBehaviour;
 
     [SerializeField]
-    private AttackBehaviour attackBehaviour;
-
-    protected IAttackable attackable;
+    private Attackable attackBehaviour;
 
     public int AttackRange => attackRange;
     public int AttackCooldown => attackCooldown;
@@ -26,18 +30,6 @@ public abstract class TowerBase : MonoBehaviour
 
     protected float lastAttackTime = float.MinValue;
 
-    protected virtual void Start()
-    {
-        if (attackBehaviour is IAttackable)
-        {
-            attackable = attackBehaviour as IAttackable;
-        }
-        else
-        {
-            Debug.LogError("AttackBehaviour is not found");
-        }
-    }
-
     protected virtual void Update()
     {
         Transform target = FindClosestEnemy();
@@ -45,7 +37,7 @@ public abstract class TowerBase : MonoBehaviour
 
         if (target != null && Time.time >= lastAttackTime + attackCooldown)
         {
-            attackable?.Attack(target);
+            attackBehaviour?.Attack(target);
             lastAttackTime = Time.time;
         }
     }

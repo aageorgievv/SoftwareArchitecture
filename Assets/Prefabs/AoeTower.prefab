@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AoeTower
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 23435f1f66fb2b446a7670c81310144e, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -61,13 +65,13 @@ PrefabInstance:
       addedObject: {fileID: 3209843684183840217}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 23435f1f66fb2b446a7670c81310144e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7648980072199090100}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 23435f1f66fb2b446a7670c81310144e, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2395845478043637626}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 23435f1f66fb2b446a7670c81310144e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1348609681653068318}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 23435f1f66fb2b446a7670c81310144e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 475728330337337655}
   m_SourcePrefab: {fileID: 100100000, guid: 23435f1f66fb2b446a7670c81310144e, type: 3}
 --- !u!1 &7063521645890515208 stripped
 GameObject:
@@ -89,25 +93,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.97599995, y: 1.0445, z: 0.97599995}
   m_Center: {x: 0, y: 0.52225, z: 0}
---- !u!114 &7648980072199090100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7063521645890515208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b2009c6d13835246b89d36ccd2e6dd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 3454720755150057376, guid: 9e8515f8cb275c047a5b902c6acf30e2, type: 3}
 --- !u!114 &2395845478043637626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b829066facd11848b1903b4bf903771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackBehaviour: {fileID: 7648980072199090100}
+  attackBehaviour: {fileID: 475728330337337655}
   attackRange: 2
   attackCooldown: 4
   moneyCost: 0
@@ -140,3 +131,16 @@ MonoBehaviour:
   upgradeCost: 150
   upgradeRange: 2
   upgradeAttackCooldown: 2
+--- !u!114 &475728330337337655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7063521645890515208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ca2aa698f811b48b09dcbf06efbb3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 3454720755150057376, guid: edc0b83f54c89a3409b81b3e3eaaa754, type: 3}

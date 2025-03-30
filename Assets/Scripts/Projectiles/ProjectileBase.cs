@@ -2,6 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Abstract base class for projectiles, providing common functionality for different types of projectiles.
+/// </summary>
+/// <remarks>
+/// - Handles movement and lifetime of the projectile.
+/// - Defines properties for speed, damage, and lifetime.
+/// - Supports different projectile types (e.g., SingleTarget, MultiTarget).
+/// - Implements collision detection to hit enemies and trigger the appropriate behavior on impact.
+/// </remarks>
+
 public abstract class ProjectileBase : MonoBehaviour
 {
     public enum EProjectileType
@@ -10,7 +20,7 @@ public abstract class ProjectileBase : MonoBehaviour
         SingleTarget,
         MultiTarget
     }
-    //To do: Make this abstract class so you can have many more projectile effects
+
     public float Speed => speed;
     public float Damage => damage;
     public float LifeTime => lifeTime;

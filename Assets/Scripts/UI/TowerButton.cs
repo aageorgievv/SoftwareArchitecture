@@ -4,6 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles the tower selection button in the UI, triggering the selection of a tower to buy.
+/// </summary>
+/// <remarks>
+/// - Raises an event when a tower is bought (`OnTowerBought`).
+/// - Initializes a button to select a tower when clicked.
+/// - Calls the `TowerSelectionManager` to select the specified tower and its projectile.
+/// </remarks>
+
 public class TowerButton : MonoBehaviour
 {
     public event Action OnTowerBought;

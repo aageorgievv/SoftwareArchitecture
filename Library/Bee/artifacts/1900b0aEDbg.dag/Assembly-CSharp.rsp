@@ -364,7 +364,7 @@
 "Assets/Scripts/Enemy/FastEnemy.cs"
 "Assets/Scripts/Enemy/MoveBehaviour.cs"
 "Assets/Scripts/Enemy/TankEnemy.cs"
-"Assets/Scripts/Interfaces/IAttackable.cs"
+"Assets/Scripts/Interfaces/Attackable.cs"
 "Assets/Scripts/Interfaces/IMovable.cs"
 "Assets/Scripts/Managers/GameManager.cs"
 "Assets/Scripts/Managers/HealthManager.cs"

@@ -1,6 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages the behavior of the upgrade button in the UI for upgrading towers.
+/// </summary>
+/// <remarks>
+/// - Listens for button click to upgrade the selected tower.
+/// - Subscribes to money changes to enable or disable the upgrade button based on available funds.
+/// - Updates button interactivity based on the selected tower and player's current money.
+/// </remarks>
+
+
 public class UpgradeButtonHandler : MonoBehaviour
 {
     [SerializeField] private Button upgradeButton;

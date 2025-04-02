@@ -14,7 +14,6 @@ using UnityEngine;
 
 public class UpgradeTower : MonoBehaviour
 {
-    public event Action<TowerBase> OnTowerUpgraded;
     public int UpgradeCost => upgradeCost;
 
     [SerializeField] private TowerBase upgradedTowerPrefab;
@@ -54,7 +53,6 @@ public class UpgradeTower : MonoBehaviour
 
         TowerBase upgradedTower = Instantiate(upgradedTowerPrefab, currentPosition, currentRotation);
         upgradedTower.UpgradeStats(upgradeRange, upgradeAttackCooldown);
-        OnTowerUpgraded?.Invoke(upgradedTower);
         Destroy(gameObject);
     }
 }

@@ -127,7 +127,7 @@ MonoBehaviour:
   attackBehaviour: {fileID: 475728330337337655}
   attackRange: 2
   attackCooldown: 4
-  moneyCost: 0
+  moneyCost: 100
 --- !u!114 &1348609681653068318
 MonoBehaviour:
   m_ObjectHideFlags: 0

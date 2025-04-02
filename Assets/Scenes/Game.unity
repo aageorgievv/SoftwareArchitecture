@@ -8661,7 +8661,7 @@ MonoBehaviour:
   textDisplayManager: {fileID: 1903159735}
   moneyManager: {fileID: 1403082877}
   selectionManager: {fileID: 404352981}
-  buildPhaseDuration: 10
+  buildPhaseDuration: 20
   enemySpawner: {fileID: 1043970889}
   timeScaleSlider: {fileID: 693395766}
   startButton: {fileID: 2059813998}

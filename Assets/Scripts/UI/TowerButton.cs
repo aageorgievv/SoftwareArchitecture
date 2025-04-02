@@ -20,11 +20,19 @@ public class TowerButton : MonoBehaviour
     [SerializeField]
     private TowerBase towerPrefab;
 
+    private MoneyManager moneyManager;
+
     private Button button;
 
     private void Awake()
     {
         button = GetComponent<Button>();
+        moneyManager = GameManager.GetManager<MoneyManager>();
+    }
+
+    private void Update()
+    {
+        UpdateButtonState(moneyManager.GetMoney());
     }
 
     private void OnEnable()
@@ -42,5 +50,19 @@ public class TowerButton : MonoBehaviour
         TowerSelectionManager towerSelectionManager = GameManager.GetManager<TowerSelectionManager>();
         towerSelectionManager.SelectTowerToBuy(towerPrefab, towerPrefab.AttackBehaviour.ProjectilePrefab);
         OnTowerBought?.Invoke();
+    }
+
+    private void UpdateButtonState(int currentMoney)
+    {
+        TowerBase tower = towerPrefab.GetComponent<TowerBase>();
+
+        if (button != null)
+        {
+            button.interactable = currentMoney >= tower.GetTowerCost();
+        }
+        else
+        {
+            button.interactable = false;
+        }
     }
 }

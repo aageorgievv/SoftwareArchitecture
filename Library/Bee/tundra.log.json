@@ -381,7 +381,7 @@
 {"msg":"nodeRetryBuild","annotation":"Csc Library/Bee/artifacts/1900b0aEDbg.dag/Assembly-CSharp.dll (+2 others)","index":302}
 {"msg":"runNodeAction","annotation":"Csc Library/Bee/artifacts/1900b0aEDbg.dag/Assembly-CSharp.dll (+2 others)","displayName":"Csc Assembly-CSharp","index":302}
 {"msg":"noderesult","processed_node_count":375,"number_of_nodes_ever_queued":379,"annotation":"Csc Library/Bee/artifacts/1900b0aEDbg.dag/Assembly-CSharp.dll (+2 others)","index":302,"exitcode":0,"outputfile":"Library\\Bee\\artifacts\\1900b0aEDbg.dag\\Assembly-CSharp.dll"}
-{"msg":"modificationDateChangedDuringBuild","annotation":"Csc Library/Bee/artifacts/1900b0aEDbg.dag/Assembly-CSharp.dll (+2 others)","index":302,"inputfile":"Assets\\Scripts\\UI\\UITracker.cs","oldTimestamp":133878189774961958,"newTimestamp":133878189776522696}
+{"msg":"modificationDateChangedDuringBuild","annotation":"Csc Library/Bee/artifacts/1900b0aEDbg.dag/Assembly-CSharp.dll (+2 others)","index":302,"inputfile":"Assets\\Scripts\\UI\\TowerButton.cs","oldTimestamp":133880762745627446,"newTimestamp":133880762746956382}
 {"msg":"inputSignatureChanged","annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb","index":379,"changes":[{"key":"FileList","value":["Library\\Bee\\artifacts\\1900b0aEDbg.dag\\Assembly-CSharp.pdb"],"oldvalue":[],"dependency":"explicit"}]}
 {"msg":"runNodeAction","annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb","displayName":"Copying Assembly-CSharp.pdb","index":379}
 {"msg":"noderesult","processed_node_count":376,"number_of_nodes_ever_queued":379,"annotation":"CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb","index":379,"exitcode":0,"outputfile":"Library\\ScriptAssemblies\\Assembly-CSharp.pdb"}

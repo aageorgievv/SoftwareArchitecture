@@ -70,4 +70,9 @@ public abstract class TowerBase : MonoBehaviour
         attackCooldown = Mathf.Max(1, attackCooldown - attackCooldownAmount);
         Debug.Log($"Tower upgraded! New Range: {attackRange}, New Cooldown: {attackCooldown}");
     }
+
+    public int GetTowerCost()
+    {
+        return moneyCost;
+    }
 }

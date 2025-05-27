@@ -15,7 +15,7 @@ using UnityEngine.UI;
 
 public class TowerButton : MonoBehaviour
 {
-    public event Action OnTowerBought;
+    public event Action OnTowerSelected;
 
     [SerializeField]
     private TowerBase towerPrefab;
@@ -49,7 +49,7 @@ public class TowerButton : MonoBehaviour
     {
         TowerSelectionManager towerSelectionManager = GameManager.GetManager<TowerSelectionManager>();
         towerSelectionManager.SelectTowerToBuy(towerPrefab, towerPrefab.AttackBehaviour.ProjectilePrefab);
-        OnTowerBought?.Invoke();
+        OnTowerSelected?.Invoke();
     }
 
     private void UpdateButtonState(int currentMoney)

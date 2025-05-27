@@ -20198,7 +20198,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   placementIndicatorPrefab: {fileID: 919132149155446097, guid: d3aee06f3359c8d43a25b80db442a73f, type: 3}
-  towerButton: {fileID: 1698491196}
+  towerButtons:
+  - {fileID: 1698491196}
+  - {fileID: 1019700742}
+  - {fileID: 1178594355}
 --- !u!4 &1518624948
 Transform:
   m_ObjectHideFlags: 0

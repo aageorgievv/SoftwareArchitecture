@@ -17,7 +17,7 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private LayerMask towerLayer;
     [SerializeField] private LayerMask placementLayer;
     [SerializeField] private GameObject placementIndicatorPrefab;
-    [SerializeField] private TowerButton towerButton;
+    [SerializeField] private TowerButton[] towerButtons;
     private float yOffset = 0.2f;
     private GameManager gameManager;
     private MoneyManager moneyManager;
@@ -33,12 +33,18 @@ public class TowerPlacement : MonoBehaviour
         moneyManager = GameManager.GetManager<MoneyManager>();
         selectionManager = GameManager.GetManager<TowerSelectionManager>();
 
-        towerButton.OnTowerBought += Selected;
+        foreach (TowerButton button in towerButtons)
+        {
+            button.OnTowerSelected += Selected;
+        }
     }
 
     private void OnDisable()
     {
-        towerButton.OnTowerBought -= Selected;
+        foreach (TowerButton button in towerButtons)
+        {
+            button.OnTowerSelected -= Selected;
+        }
     }
 
     // Update is called once per frame

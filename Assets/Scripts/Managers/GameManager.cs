@@ -140,9 +140,9 @@ public class GameManager : MonoBehaviour, IManager
 
         while (buildPhaseTimeLeft > 0)
         {
-            OnBuildPhaseTimeChanged?.Invoke(buildPhaseTimeLeft);
             yield return new WaitForSeconds(1f);
             buildPhaseTimeLeft--;
+            OnBuildPhaseTimeChanged?.Invoke(buildPhaseTimeLeft);
         }
 
         StartCombatPhase();

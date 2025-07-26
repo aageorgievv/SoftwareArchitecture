@@ -70,6 +70,6 @@ public class  UITracker : MonoBehaviour
 
     private void UpdateBuildPhaseTimer(float timeLeft)
     {
-        buildPhaseTimerText.text = $"Time Left: {Mathf.Ceil(timeLeft)}";
+        buildPhaseTimerText.text = $"{timeLeft}";
     }
 }

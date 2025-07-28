@@ -33,12 +33,18 @@ public class UpgradeButtonHandler : MonoBehaviour
         selectedTower = tower;
         MoneyManager moneyManager = GameManager.GetManager<MoneyManager>();
         UpdateButtonState(moneyManager.GetMoney());
+        upgradeButton.interactable = tower.HasUpgrade;
     }
 
     private void UpgradeSelectedTower()
     {
-        selectedTower?.TowerUpgrade();
-        Debug.Log("Tower Upgraded");
+        TowerBase upgradedTower = selectedTower?.TowerUpgrade();
+
+        if (upgradedTower != null)
+        {
+            Debug.Log("Tower Upgraded");
+            SelectTowerForUpgrade(upgradedTower);
+        }
     }
 
     private void UpdateButtonState(int currentMoney)

@@ -8,8 +8,6 @@ using UnityEngine;
 /// - Automatically attacks the closest enemy within range when the cooldown period has passed.
 /// - Can be upgraded to increase attack range and decrease attack cooldown.
 /// </remarks>
-
-
 public abstract class TowerBase : MonoBehaviour
 {
     public Attackable AttackBehaviour => attackBehaviour;
@@ -17,6 +15,7 @@ public abstract class TowerBase : MonoBehaviour
     [SerializeField]
     private Attackable attackBehaviour;
 
+    public bool HasUpgrade => upgradedTowerPrefab != null;
     public int AttackRange => attackRange;
     public int AttackCooldown => attackCooldown;
     public int MoneyCost => moneyCost;
@@ -84,20 +83,20 @@ public abstract class TowerBase : MonoBehaviour
         return moneyCost;
     }
 
-    public void TowerUpgrade()
+    public TowerBase TowerUpgrade()
     {
         MoneyManager moneyManager = GameManager.GetManager<MoneyManager>();
 
         if (moneyManager == null)
         {
             Debug.LogError("MoneyManager not initialized.");
-            return;
+            return null;
         }
 
         if (!moneyManager.CanAfford(upgradeCost))
         {
             Debug.Log("Not enough money to upgrade.");
-            return;
+            return null;
         }
 
         moneyManager.SpendMoney(upgradeCost);
@@ -108,5 +107,6 @@ public abstract class TowerBase : MonoBehaviour
         TowerBase upgradedTower = Instantiate(upgradedTowerPrefab, currentPosition, currentRotation);
         upgradedTower.UpgradeStats(upgradedRange, upgradedAttackCooldown);
         Destroy(gameObject);
+        return upgradedTower;
     }
 }

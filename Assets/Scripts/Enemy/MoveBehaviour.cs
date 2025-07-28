@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.FilePathAttribute;
 
 /// <summary>
 /// Controls enemy movement using a NavMeshAgent and manages travel points.

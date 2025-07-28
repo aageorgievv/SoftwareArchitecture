@@ -137,3 +137,7 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 4
   moneyCost: 50
+  upgradedTowerPrefab: {fileID: 0}
+  upgradeCost: 0
+  upgradedRange: 0
+  upgradedAttackCooldown: 0

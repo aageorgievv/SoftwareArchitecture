@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,12 +32,14 @@ public class SelectionUI : MonoBehaviour
     [SerializeField]
     private GameObject panel;
 
+
     private TowerSelectionManager selectionManager;
     void Start()
     {
         panel.SetActive(false);
         selectionManager = GameManager.GetManager<TowerSelectionManager>();
         selectionManager.OnTowerSelected += UpdateUI;
+        
     }
 
     private void OnDestroy()

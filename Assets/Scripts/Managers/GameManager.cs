@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour, IManager
     [SerializeField]
     private Slider timeScaleSlider;
 
-    [SerializeField] private Button startButton;
     [SerializeField] private WinScreenUI winScreenUI;
 
     private static Dictionary<Type, IManager> managers = new Dictionary<Type, IManager>();
@@ -91,11 +90,6 @@ public class GameManager : MonoBehaviour, IManager
             Debug.LogError($"{nameof(timeScaleSlider)} is null");
         }
 
-        if (startButton == null)
-        {
-            Debug.LogError($"{nameof(startButton)} is null");
-        }
-
         managers.Clear();
         managers.Add(typeof(GameManager), this);
         managers.Add(typeof(HealthManager), healthManager);
@@ -107,10 +101,14 @@ public class GameManager : MonoBehaviour, IManager
         healthManager.OnGameOver += HandleGameOver;
         enemySpawner.OnGameWin += HandleGameWin;
 
-        startButton.onClick.AddListener(HandleStartButtonClicked);
         timeScaleSlider.onValueChanged.AddListener(HandleTimeScaleValueChanged);
 
         Time.timeScale = 1f; // reset timescale
+    }
+
+    private void Start()
+    {
+        StartBuildPhase();
     }
 
     public static T GetManager<T>() where T : IManager
@@ -124,7 +122,6 @@ public class GameManager : MonoBehaviour, IManager
         healthManager.OnGameOver -= HandleGameOver;
         enemySpawner.OnGameWin -= HandleGameWin;
         timeScaleSlider.onValueChanged.RemoveListener(HandleTimeScaleValueChanged);
-        startButton.onClick.RemoveListener(HandleStartButtonClicked);
     }
 
     private void StartBuildPhase()
@@ -176,10 +173,6 @@ public class GameManager : MonoBehaviour, IManager
     public float GetBuildPhaseTimeLeft()
     {
         return buildPhaseTimeLeft;
-    }
-    private void HandleStartButtonClicked()
-    {
-        StartBuildPhase();
     }
 
     private void HandleTimeScaleValueChanged(float value)

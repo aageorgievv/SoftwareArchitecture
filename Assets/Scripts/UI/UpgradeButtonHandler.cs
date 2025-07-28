@@ -14,7 +14,7 @@ using UnityEngine.UI;
 public class UpgradeButtonHandler : MonoBehaviour
 {
     [SerializeField] private Button upgradeButton;
-    private UpgradeTower selectedTower;
+    private TowerBase selectedTower;
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class UpgradeButtonHandler : MonoBehaviour
         }
     }
 
-    public void SelectTowerForUpgrade(UpgradeTower tower)
+    public void SelectTowerForUpgrade(TowerBase tower)
     {
         selectedTower = tower;
         MoneyManager moneyManager = GameManager.GetManager<MoneyManager>();

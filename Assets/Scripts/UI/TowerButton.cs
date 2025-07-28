@@ -27,6 +27,10 @@ public class TowerButton : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<Button>();
+    }
+
+    private void Start()
+    {
         moneyManager = GameManager.GetManager<MoneyManager>();
     }
 
@@ -56,13 +60,16 @@ public class TowerButton : MonoBehaviour
     {
         TowerBase tower = towerPrefab.GetComponent<TowerBase>();
 
-        if (button != null)
+        if (button != null && currentMoney >= tower.GetTowerCost())
         {
-            button.interactable = currentMoney >= tower.GetTowerCost();
+            button.interactable = true;
+            button.GetComponent<Image>().color = Color.white;
+
         }
         else
         {
             button.interactable = false;
+            button.GetComponent<Image>().color = Color.red;
         }
     }
 }

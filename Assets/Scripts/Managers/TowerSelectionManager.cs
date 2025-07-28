@@ -21,7 +21,7 @@ public class TowerSelectionManager : MonoBehaviour, IManager
 
     private TowerBase selectedTowerPrefab;
     private ProjectileBase selectedProjectilePrefab;
-    private UpgradeTower selectedTower;
+    private TowerBase selectedTower;
 
     public void SelectTowerToBuy(TowerBase towerPrefab, ProjectileBase projectilePrefab)
     {
@@ -38,7 +38,7 @@ public class TowerSelectionManager : MonoBehaviour, IManager
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                UpgradeTower tower = hit.collider.GetComponent<UpgradeTower>();
+                TowerBase tower = hit.collider.GetComponent<TowerBase>();
                 if (tower != null)
                 {
                     SelectTower(tower);
@@ -47,22 +47,29 @@ public class TowerSelectionManager : MonoBehaviour, IManager
         }
     }
 
-    private void SelectTower(UpgradeTower tower)
+    private void SelectTower(TowerBase tower)
     {
         selectedTower = tower;
         Debug.Log("SelectedTower: " + selectedTower);
 
         UpgradeButtonHandler upgradeButtonHandler = FindObjectOfType<UpgradeButtonHandler>();
+        SellButtonHandler sellButtonHandler = FindObjectOfType<SellButtonHandler>();
+
         if (upgradeButtonHandler != null)
         {
             upgradeButtonHandler.SelectTowerForUpgrade(selectedTower);
+        }
+
+        if(sellButtonHandler != null)
+        {
+
         }
     }
     public TowerBase GetSelectedTower()
     {
         return selectedTowerPrefab;
     }
-    public UpgradeTower GetSelectedTowerToUpgrade()
+    public TowerBase GetSelectedTowerToUpgrade()
     {
         return selectedTower;
     }

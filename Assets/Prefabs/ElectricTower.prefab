@@ -128,6 +128,10 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 4
   moneyCost: 100
+  upgradedTowerPrefab: {fileID: -4373793616022302278, guid: 55107651ac70ab8468448b3e211464b3, type: 3}
+  upgradeCost: 300
+  upgradedRange: 4
+  upgradedAttackCooldown: 3
 --- !u!114 &8512931188848557695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +144,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac9922c66452d2e4eb9064632cce2050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradedTowerPrefab: {fileID: -4373793616022302278, guid: 55107651ac70ab8468448b3e211464b3, type: 3}
-  upgradeCost: 100
-  upgradeRange: 2
-  upgradeAttackCooldown: 2

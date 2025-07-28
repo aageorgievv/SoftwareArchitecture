@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class AoeTower : TowerBase
 {
-    //TO DO make AOE damage
-    //Maybe add some sort of effect
 
     public AoeAttackBehaviour AoEAttackBehaviour => AttackBehaviour as AoeAttackBehaviour;
 

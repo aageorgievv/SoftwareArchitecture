@@ -20,13 +20,21 @@ public abstract class TowerBase : MonoBehaviour
     public int AttackRange => attackRange;
     public int AttackCooldown => attackCooldown;
     public int MoneyCost => moneyCost;
+    public int UpgradeCost => upgradeCost;
 
+    [Header("Tower Settings")]
     [SerializeField]
     protected int attackRange = 10;
     [SerializeField]
     protected int attackCooldown = 2;
     [SerializeField]
     protected int moneyCost;
+
+    [Header("Tower Upgrade Settings")]
+    [SerializeField] protected TowerBase upgradedTowerPrefab;
+    [SerializeField] protected int upgradeCost;
+    [SerializeField] protected int upgradedRange;
+    [SerializeField] protected int upgradedAttackCooldown;
 
     protected float lastAttackTime = float.MinValue;
 
@@ -74,5 +82,31 @@ public abstract class TowerBase : MonoBehaviour
     public int GetTowerCost()
     {
         return moneyCost;
+    }
+
+    public void TowerUpgrade()
+    {
+        MoneyManager moneyManager = GameManager.GetManager<MoneyManager>();
+
+        if (moneyManager == null)
+        {
+            Debug.LogError("MoneyManager not initialized.");
+            return;
+        }
+
+        if (!moneyManager.CanAfford(upgradeCost))
+        {
+            Debug.Log("Not enough money to upgrade.");
+            return;
+        }
+
+        moneyManager.SpendMoney(upgradeCost);
+
+        Vector3 currentPosition = transform.position;
+        Quaternion currentRotation = transform.rotation;
+
+        TowerBase upgradedTower = Instantiate(upgradedTowerPrefab, currentPosition, currentRotation);
+        upgradedTower.UpgradeStats(upgradedRange, upgradedAttackCooldown);
+        Destroy(gameObject);
     }
 }

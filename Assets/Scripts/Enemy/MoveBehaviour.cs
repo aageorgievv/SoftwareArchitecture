@@ -14,6 +14,9 @@ using UnityEngine.AI;
 /// - Invokes `OnDestinationReached` when the final destination is reached.
 /// - Supports speed adjustment and the ability to stop the agent.
 /// - Ensures `NavMeshAgent` is properly assigned and utilized.
+/// - Manages the upgrade of a tower, including cost, range, and attack cooldown.
+/// - Instantiates an upgraded version of the tower and applies the upgrade.
+/// - Triggers an event when the tower is successfully upgraded.
 /// </remarks>
 
 [RequireComponent(typeof(NavMeshAgent))]

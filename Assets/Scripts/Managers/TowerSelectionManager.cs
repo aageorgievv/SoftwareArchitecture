@@ -11,7 +11,7 @@ using UnityEngine.EventSystems;
 /// - Implements `IManager` for global access.
 /// - Tracks the selected tower and projectile prefabs for placement.
 /// - Fires `OnTowerSelected` event when a new tower is chosen for purchase.
-/// - Handles selecting existing towers in the scene for upgrades.
+/// - Handles selecting existing towers in the scene for upgrades/selling.
 /// - Uses raycasting to detect clicked towers while avoiding UI clicks.
 /// </remarks>
 
@@ -62,7 +62,7 @@ public class TowerSelectionManager : MonoBehaviour, IManager
 
         if(sellButtonHandler != null)
         {
-
+            sellButtonHandler.SelectTowerToSell(selectedTower);
         }
     }
     public TowerBase GetSelectedTower()
@@ -72,5 +72,10 @@ public class TowerSelectionManager : MonoBehaviour, IManager
     public TowerBase GetSelectedTowerToUpgrade()
     {
         return selectedTower;
+    }
+
+    public void SetSelectedTower()
+    {
+        selectedTowerPrefab = null;
     }
 }

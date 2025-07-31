@@ -22,10 +22,11 @@ public class UpgradeButtonHandler : MonoBehaviour
 
         MoneyManager moneyManager = GameManager.GetManager<MoneyManager>();
 
-        if(moneyManager != null )
+        if(moneyManager != null)
         {
             moneyManager.OnMoneyChanged += UpdateButtonState;
         }
+        upgradeButton.interactable = false;
     }
 
     public void SelectTowerForUpgrade(TowerBase tower)

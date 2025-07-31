@@ -2,19 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// A class responsible for handling tower placement during the building phase of the game.
-/// </summary>
-/// <remarks>
-/// - Displays a placement indicator when hovering over valid tower slots.
-/// - Allows the player to place or sell towers using the left and right mouse buttons.
-/// - Validates placement conditions such as whether the slot is unoccupied and if the player has enough money.
-/// - The class listens for tower selection events and updates the placement indicator accordingly.
-/// </remarks>
-
 public class TowerPlacement : MonoBehaviour
 {
-    [SerializeField] private LayerMask towerLayer;
     [SerializeField] private LayerMask placementLayer;
     [SerializeField] private GameObject placementIndicatorPrefab;
     [SerializeField] private TowerButton[] towerButtons;
@@ -59,11 +48,6 @@ public class TowerPlacement : MonoBehaviour
         {
             PlaceTower();
         }
-
-        if (Input.GetMouseButtonDown(1) && gameManager.CurrentGameState == GameManager.EGameState.BuildingPhase)
-        {
-            SellTower();
-        }
     }
 
     private void PlaceTower()
@@ -84,6 +68,7 @@ public class TowerPlacement : MonoBehaviour
                     towerSlot.OccupySlot();
                     HidePlacementIndicator();
                     showIndicator = false;
+                    selectionManager.SetSelectedTower();
                 }
                 else
                 {
@@ -95,18 +80,6 @@ public class TowerPlacement : MonoBehaviour
             {
                 Debug.Log("Cannot Place!");
             }
-        }
-    }
-
-    private void SellTower()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, towerLayer))
-        {
-            TowerBase tower = hit.collider.GetComponent<TowerBase>();
-            moneyManager.AddMoney(tower.MoneyCost);
-            Destroy(tower.gameObject);
         }
     }
 

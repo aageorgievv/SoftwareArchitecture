@@ -21,6 +21,7 @@ public class TowerButton : MonoBehaviour
     private TowerBase towerPrefab;
 
     private MoneyManager moneyManager;
+    private GameManager gameManager;
 
     private Button button;
 
@@ -31,12 +32,21 @@ public class TowerButton : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.GetManager<GameManager>();
         moneyManager = GameManager.GetManager<MoneyManager>();
     }
 
     private void Update()
     {
         UpdateButtonState(moneyManager.GetMoney());
+
+        if(gameManager.IsInBuildingPhase())
+        {
+            button.interactable = true;
+        } else
+        {
+            button.interactable = false;
+        }
     }
 
     private void OnEnable()

@@ -9,14 +9,23 @@ public class SellButtonHandler : MonoBehaviour
 
     private LayerMask towerLayer;
     private TowerBase selectedTower;
+    private GameManager gameManager;
     private MoneyManager moneyManager;
     void Start()
     {
         sellButton.onClick.AddListener(SellSelectedTower);
+        gameManager = GameManager.GetManager<GameManager>();
         moneyManager = GameManager.GetManager<MoneyManager>();
         sellButton.interactable = false;
     }
 
+    private void Update()
+    {
+        if (!gameManager.IsInBuildingPhase())
+        {
+            sellButton.interactable = false;
+        }
+    }
     public void SelectTowerToSell(TowerBase tower)
     {
         selectedTower = tower;

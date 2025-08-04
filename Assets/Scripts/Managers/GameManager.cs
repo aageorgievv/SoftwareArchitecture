@@ -165,6 +165,12 @@ public class GameManager : MonoBehaviour, IManager
         winScreenUI.ShowWinScreen();
     }
 
+    private void HandleTimeScaleValueChanged(float value)
+    {
+        Time.timeScale = value;
+        Debug.Log($"TimeScale: {value}");
+    }
+
     public int GetWaveNumber()
     {
         return waveNumber;
@@ -175,9 +181,8 @@ public class GameManager : MonoBehaviour, IManager
         return buildPhaseTimeLeft;
     }
 
-    private void HandleTimeScaleValueChanged(float value)
+    public bool IsInBuildingPhase()
     {
-        Time.timeScale = value;
-        Debug.Log($"TimeScale: {value}");
+        return CurrentGameState == EGameState.BuildingPhase;
     }
 }

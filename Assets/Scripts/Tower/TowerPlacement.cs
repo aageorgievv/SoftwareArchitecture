@@ -48,6 +48,11 @@ public class TowerPlacement : MonoBehaviour
         {
             PlaceTower();
         }
+
+        if(!gameManager.IsInBuildingPhase())
+        {
+            HidePlacementIndicator();
+        }
     }
 
     private void PlaceTower()
@@ -112,7 +117,7 @@ public class TowerPlacement : MonoBehaviour
             placementIndicatorInstance = Instantiate(placementIndicatorPrefab);
         }
 
-        placementIndicatorInstance.transform.position = new Vector3(towerSlot.transform.position.x, towerSlot.transform.position.y - yOffset, towerSlot.transform.position.z);
+        placementIndicatorInstance.transform.position = new Vector3(towerSlot.transform.position.x, towerSlot.transform.position.y, towerSlot.transform.position.z);
         currentHoveredSlot = towerSlot;
     }
 

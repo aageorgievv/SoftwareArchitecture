@@ -16,10 +16,13 @@ public class UpgradeButtonHandler : MonoBehaviour
     [SerializeField] private Button upgradeButton;
     private TowerBase selectedTower;
 
+    private GameManager gameManager;
+
     private void Start()
     {
         upgradeButton.onClick.AddListener(UpgradeSelectedTower);
 
+        gameManager = GameManager.GetManager<GameManager>();
         MoneyManager moneyManager = GameManager.GetManager<MoneyManager>();
 
         if(moneyManager != null)
@@ -27,6 +30,14 @@ public class UpgradeButtonHandler : MonoBehaviour
             moneyManager.OnMoneyChanged += UpdateButtonState;
         }
         upgradeButton.interactable = false;
+    }
+
+    private void Update()
+    {
+        if(!gameManager.IsInBuildingPhase())
+        {
+            upgradeButton.interactable = false;
+        }
     }
 
     public void SelectTowerForUpgrade(TowerBase tower)

@@ -32,7 +32,6 @@ public class  UITracker : MonoBehaviour
         moneyManager.OnMoneyChanged += UpdateMoneyText;
         healthManager.OnHealthChanged += UpdateHealthText;
         gameManager.OnWaveChanged += UpdateWaveText;
-        gameManager.OnBuildPhaseTimeChanged += UpdateBuildPhaseTimer;
 
         UpdateHealthText(healthManager.GetCurrentHealth());
         UpdateMoneyText(moneyManager.GetMoney());
@@ -43,14 +42,14 @@ public class  UITracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateBuildPhaseTimer(gameManager.BuildPhaseTimeLeft);
     }
+
     private void OnDestroy()
     {
         moneyManager.OnMoneyChanged -= UpdateMoneyText;
         healthManager.OnHealthChanged -= UpdateHealthText;
         gameManager.OnWaveChanged -= UpdateWaveText;
-        gameManager.OnBuildPhaseTimeChanged -= UpdateBuildPhaseTimer;
     }
 
     private void UpdateMoneyText(int money)
@@ -70,6 +69,6 @@ public class  UITracker : MonoBehaviour
 
     private void UpdateBuildPhaseTimer(float timeLeft)
     {
-        buildPhaseTimerText.text = $"{timeLeft}";
+        buildPhaseTimerText.text = $"{timeLeft:0}";
     }
 }

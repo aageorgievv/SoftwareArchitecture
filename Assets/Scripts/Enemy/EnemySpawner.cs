@@ -26,10 +26,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private Transform spawnPoint;
 
-    private int currentWaveIndex = 0;
+    private readonly List<EnemyBase> spawnedEnemies = new List<EnemyBase>();
 
-    private int activeEnemies = 0;
-     
+    private int currentWaveIndex = 0;
+    private bool isSpawning;
+
     void Start()
     {
         
@@ -37,8 +38,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        Debug.Log($"Active Enemies: {activeEnemies}");
-
+        //Debug.Log($"Active Enemies: {spawnedEnemies.Count}");
     }
 
     public void StartNextWave()
@@ -56,24 +56,33 @@ public class EnemySpawner : MonoBehaviour
     //Using Coroutines because spawning happens overtime and they allow controlled enemy spawning
     private IEnumerator SpawnWave(WaveConfig waveConfig)
     {
+        isSpawning = true;
+        int currentWave = currentWaveIndex;
+        Debug.Log($"Spawn Wave {currentWave}");
+
         for (int i = 0; i < waveConfig.EnemyWaves.Count; i++)
         {
-            yield return StartCoroutine(spawnEnemySet(waveConfig.EnemyWaves[i]));
+            yield return StartCoroutine(SpawnEnemySet(waveConfig.EnemyWaves[i]));
 
             // Applying cooldown after the first EnemySet, but not for the last one in the wave
             if (i < waveConfig.EnemyWaves.Count - 1)
             {
+                Debug.Log($"Spawned Set ({i + 1}/{waveConfig.EnemyWaves.Count}) for Wave {currentWave}");
                 yield return new WaitForSeconds(waveConfig.waveCooldown);
             }
         }
         currentWaveIndex++;
+        isSpawning = false;
     }
 
-    private IEnumerator spawnEnemySet(EnemySettings enemySet)
+    private IEnumerator SpawnEnemySet(EnemySettings enemySet)
     {
-        for(int i = 0; i < enemySet.enemyAmount; i++)
+        Debug.Log($"Spawn Enemy Set");
+
+        for (int i = 0; i < enemySet.enemyAmount; i++)
         {
             SpawnEnemy(enemySet.enemyPrefab);
+            Debug.Log($"Spawned Enemy ({i + 1}/{enemySet.enemyAmount})");
             yield return new WaitForSeconds(enemySet.spawnDelay);
         }
     }
@@ -82,29 +91,35 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
         EnemyBase enemyBase = enemy.GetComponent<EnemyBase>();
-        enemyBase.SetSpawner(this);
+        enemyBase.OnDeathEvent += HandleEnemyDeathEvent;
+        spawnedEnemies.Add(enemyBase);
         MoveBehaviour moveBehaviour = enemy.GetComponent<MoveBehaviour>();
 
         if (moveBehaviour != null)
         {
             moveBehaviour.SetTravelPoints(travelPoints);
         }
-        activeEnemies++;
     }
 
-    public void EnemyDefeated()
+    private void HandleEnemyDeathEvent(EnemyBase enemyBase)
     {
-        activeEnemies--;
-
-        if (activeEnemies <= 0)
+        enemyBase.OnDeathEvent -= HandleEnemyDeathEvent;
+        if (!spawnedEnemies.Remove(enemyBase))
         {
-            OnWaveEnd?.Invoke();
-            Debug.Log("Wave ended");
-
+            Debug.LogError("Dead enemy was not spawned by this spawner.");
+        }
+    
+        if (!isSpawning && spawnedEnemies.Count <= 0)
+        {
             if (currentWaveIndex >= waves.Count)
             {
-                OnGameWin?.Invoke();
                 Debug.Log("Game Won!");
+                OnGameWin?.Invoke();
+            }
+            else
+            {
+                Debug.Log("Wave ended");
+                OnWaveEnd?.Invoke();
             }
         }
     }

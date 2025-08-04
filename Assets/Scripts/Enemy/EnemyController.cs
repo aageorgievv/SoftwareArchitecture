@@ -57,22 +57,22 @@ public class EnemyController : MonoBehaviour
 
     public void Die()
     {
-        if (spawner != null)
+/*        if (spawner != null)
         {
             Destroy(gameObject);
             spawner.EnemyDefeated();
         } else
         {
             Debug.LogError("EnemySpawner is null");
-        }
+        }*/
     }
 
     private void HandleDestinationReached(MoveBehaviour move)
     {
-        if (move == moveBehaviour)
+/*        if (move == moveBehaviour)
         {
             healthManager?.ReduceLife();
             Die();
-        }
+        }*/
     }
 }

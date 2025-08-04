@@ -9290,7 +9290,7 @@ MonoBehaviour:
   textDisplayManager: {fileID: 1903159735}
   moneyManager: {fileID: 1403082877}
   selectionManager: {fileID: 404352981}
-  buildPhaseDuration: 10
+  buildPhaseDuration: 30
   enemySpawner: {fileID: 1043970889}
   timeScaleSlider: {fileID: 1857498833}
   winScreenUI: {fileID: 232242457}

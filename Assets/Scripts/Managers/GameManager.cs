@@ -56,11 +56,12 @@ public class GameManager : MonoBehaviour, IManager
     private static Dictionary<Type, IManager> managers = new Dictionary<Type, IManager>();
 
     private int waveNumber = 1;
-    private float buildPhaseTimeLeft;
+    public float BuildPhaseTimeLeft { get; private set; }
 
     public event Action<int> OnWaveChanged;
-    public event Action<float> OnBuildPhaseTimeChanged;
     public event Action OnGameOverEvent;
+
+    private Coroutine previousCoroutine;
 
 
     private void Awake()
@@ -126,20 +127,25 @@ public class GameManager : MonoBehaviour, IManager
 
     private void StartBuildPhase()
     {
-        CurrentGameState = EGameState.BuildingPhase;
         Debug.Log("GameState: BuildPhase");
-        StartCoroutine(BuildPhaseCountDown());
+        CurrentGameState = EGameState.BuildingPhase;
+
+        if (previousCoroutine != null)
+        {
+            StopCoroutine(previousCoroutine);
+        }
+
+        previousCoroutine = StartCoroutine(BuildPhaseCountDown());
     }
 
     private IEnumerator BuildPhaseCountDown()
     {
-        buildPhaseTimeLeft = buildPhaseDuration;
+        BuildPhaseTimeLeft = buildPhaseDuration;
 
-        while (buildPhaseTimeLeft > 0)
+        while (BuildPhaseTimeLeft > 0)
         {
-            yield return new WaitForSeconds(1f);
-            buildPhaseTimeLeft--;
-            OnBuildPhaseTimeChanged?.Invoke(buildPhaseTimeLeft);
+            BuildPhaseTimeLeft -= Time.deltaTime;
+            yield return null;
         }
 
         StartCombatPhase();
@@ -147,8 +153,8 @@ public class GameManager : MonoBehaviour, IManager
 
     private void StartCombatPhase()
     {
-        CurrentGameState = EGameState.CombatPhase;
         Debug.Log("GameState: CombatPhase");
+        CurrentGameState = EGameState.CombatPhase;
         enemySpawner.StartNextWave();
         waveNumber++;
         OnWaveChanged?.Invoke(waveNumber);
@@ -178,7 +184,7 @@ public class GameManager : MonoBehaviour, IManager
 
     public float GetBuildPhaseTimeLeft()
     {
-        return buildPhaseTimeLeft;
+        return BuildPhaseTimeLeft;
     }
 
     public bool IsInBuildingPhase()

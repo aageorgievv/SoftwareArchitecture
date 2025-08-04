@@ -21,6 +21,7 @@ public abstract class EnemyBase : MonoBehaviour
     public static event Action<Vector3, int> OnEnemyDefeated;
 
     public event Action OnHealthChanged;
+    public event Action<EnemyBase> OnDeathEvent;
 
     [SerializeField] protected float maxHealth = 100f;
 
@@ -38,7 +39,6 @@ public abstract class EnemyBase : MonoBehaviour
     [SerializeField]
     protected MoveBehaviour moveBehaviour;
 
-    private EnemySpawner enemySpawner;
     private MoneyManager moneyManager;
 
     protected virtual void Start()
@@ -98,7 +98,6 @@ public abstract class EnemyBase : MonoBehaviour
             health -= amount;
             OnHealthChanged?.Invoke();
         }
-        //Debug.Log($"Health remaining {health}, enemy's worth {money}");
 
         if (health <= 0)
         {
@@ -110,17 +109,9 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Die()
     {
         StopAllCoroutines();
-        if (enemySpawner != null)
-        {
-            enemySpawner.EnemyDefeated();
-            Destroy(gameObject);
-        }
-        else
-        {
-            Debug.LogError("EnemySpawner is null");
-        }
-
         moneyManager.AddMoney(money);
+        OnDeathEvent?.Invoke(this);
+        Destroy(gameObject);
     }
 
     protected virtual void HandleDestinationReached(MoveBehaviour move)
@@ -147,15 +138,9 @@ public abstract class EnemyBase : MonoBehaviour
     {
         isStunned = true;
         moveBehaviour.IsAgentStopped(true);
-        //Debug.Log($"{gameObject.name} is stunned for {duration} seconds.");
         yield return new WaitForSeconds(duration);
         isStunned = false;
         moveBehaviour.IsAgentStopped(false);
-    }
-
-    public void SetSpawner(EnemySpawner spawner)
-    {
-        enemySpawner = spawner;
     }
 
     public float GetHealthPercentage()

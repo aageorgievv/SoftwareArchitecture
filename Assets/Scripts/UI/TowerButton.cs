@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,8 +18,7 @@ public class TowerButton : MonoBehaviour
 {
     public event Action OnTowerSelected;
 
-    [SerializeField]
-    private TowerBase towerPrefab;
+    [SerializeField] private TowerBase towerPrefab;
 
     private MoneyManager moneyManager;
     private GameManager gameManager;

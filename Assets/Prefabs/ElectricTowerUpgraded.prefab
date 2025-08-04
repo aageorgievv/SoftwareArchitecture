@@ -94,8 +94,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.7149998, z: 1}
-  m_Center: {x: 0, y: 0.8574999, z: 0}
+  m_Size: {x: 0.97599995, y: 1.0445, z: 0.97599995}
+  m_Center: {x: 0, y: 0.52225, z: 0}
 --- !u!114 &9139642437261082192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,3 +125,7 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 4
   moneyCost: 150
+  upgradedTowerPrefab: {fileID: 0}
+  upgradeCost: 0
+  upgradedRange: 0
+  upgradedAttackCooldown: 0

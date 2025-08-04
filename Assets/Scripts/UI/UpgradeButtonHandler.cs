@@ -24,11 +24,6 @@ public class UpgradeButtonHandler : MonoBehaviour
 
         gameManager = GameManager.GetManager<GameManager>();
         MoneyManager moneyManager = GameManager.GetManager<MoneyManager>();
-
-        if(moneyManager != null)
-        {
-            moneyManager.OnMoneyChanged += UpdateButtonState;
-        }
         upgradeButton.interactable = false;
     }
 
@@ -44,8 +39,8 @@ public class UpgradeButtonHandler : MonoBehaviour
     {
         selectedTower = tower;
         MoneyManager moneyManager = GameManager.GetManager<MoneyManager>();
-        UpdateButtonState(moneyManager.GetMoney());
-        upgradeButton.interactable = tower.HasUpgrade;
+        upgradeButton.interactable = tower.HasUpgrade && moneyManager.GetMoney() >= selectedTower.UpgradedCost;
+
     }
 
     private void UpgradeSelectedTower()
@@ -56,17 +51,6 @@ public class UpgradeButtonHandler : MonoBehaviour
         {
             Debug.Log("Tower Upgraded");
             SelectTowerForUpgrade(upgradedTower);
-        }
-    }
-
-    private void UpdateButtonState(int currentMoney)
-    {
-        if(selectedTower != null)
-        {
-            upgradeButton.interactable = currentMoney >= selectedTower.UpgradeCost;
-        } else
-        {
-            upgradeButton.interactable = false;
         }
     }
 }

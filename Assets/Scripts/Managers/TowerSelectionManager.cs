@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -19,6 +20,11 @@ public class TowerSelectionManager : MonoBehaviour, IManager
 {
     public event Action<TowerBase, ProjectileBase> OnTowerSelected;
 
+    [SerializeField] private GameObject upgradeStatsPanel;
+    [SerializeField] private TMP_Text upgradeCostText;
+    [SerializeField] private TMP_Text upgradeRangeText;
+    [SerializeField] private TMP_Text upgradeCooldownText;
+
     private TowerBase selectedTowerPrefab;
     private ProjectileBase selectedProjectilePrefab;
     private TowerBase selectedTower;
@@ -30,6 +36,10 @@ public class TowerSelectionManager : MonoBehaviour, IManager
         OnTowerSelected?.Invoke(towerPrefab, projectilePrefab);
     }
 
+    private void Start()
+    {
+        upgradeStatsPanel.SetActive(false);
+    }
 
     private void Update()
     {
@@ -42,6 +52,9 @@ public class TowerSelectionManager : MonoBehaviour, IManager
                 if (tower != null)
                 {
                     SelectTower(tower);
+                } else
+                {
+                    upgradeStatsPanel.SetActive(false);
                 }
             }
         }
@@ -51,6 +64,14 @@ public class TowerSelectionManager : MonoBehaviour, IManager
     {
         selectedTower = tower;
         Debug.Log("SelectedTower: " + selectedTower);
+
+        if(tower.HasUpgrade)
+        {
+            upgradeCostText.text = $"Cost: +{tower.UpgradedCost}";
+            upgradeRangeText.text = $"Range: +{tower.UpgradedRange}";
+            upgradeCooldownText.text = $"Cooldown: +{tower.UpgradedCooldown}";
+            upgradeStatsPanel.SetActive(true);
+        }
 
         UpgradeButtonHandler upgradeButtonHandler = FindObjectOfType<UpgradeButtonHandler>();
         SellButtonHandler sellButtonHandler = FindObjectOfType<SellButtonHandler>();

@@ -19,7 +19,9 @@ public abstract class TowerBase : MonoBehaviour
     public int AttackRange => attackRange;
     public int AttackCooldown => attackCooldown;
     public int MoneyCost => moneyCost;
-    public int UpgradeCost => upgradeCost;
+    public int UpgradedCost => upgradeCost;
+    public int UpgradedRange => upgradedRange;
+    public int UpgradedCooldown => upgradedAttackCooldown;
 
     [Header("Tower Settings")]
     [SerializeField]
@@ -30,6 +32,7 @@ public abstract class TowerBase : MonoBehaviour
     protected int moneyCost;
 
     [Header("Tower Upgrade Settings")]
+
     [SerializeField] protected TowerBase upgradedTowerPrefab;
     [SerializeField] protected int upgradeCost;
     [SerializeField] protected int upgradedRange;

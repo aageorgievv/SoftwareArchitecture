@@ -37,7 +37,8 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        
+        Debug.Log($"Active Enemies: {activeEnemies}");
+
     }
 
     public void StartNextWave()

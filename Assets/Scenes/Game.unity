@@ -9290,7 +9290,7 @@ MonoBehaviour:
   textDisplayManager: {fileID: 1903159735}
   moneyManager: {fileID: 1403082877}
   selectionManager: {fileID: 404352981}
-  buildPhaseDuration: 60
+  buildPhaseDuration: 10
   enemySpawner: {fileID: 1043970889}
   timeScaleSlider: {fileID: 1857498833}
   winScreenUI: {fileID: 232242457}
@@ -15400,6 +15400,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 11400000, guid: da1355a799d524748a2a8f71e7372431, type: 2}
+  - {fileID: 11400000, guid: 23d3393f54f61b043898a91113cf0851, type: 2}
+  - {fileID: 11400000, guid: 84a52b7873aba994d97ab0f29a0566d9, type: 2}
+  - {fileID: 11400000, guid: a5693ef5bec3c9241afc84f1d0143840, type: 2}
+  - {fileID: 11400000, guid: 3c87249466289e140b6a624cc619de3e, type: 2}
   travelPoints:
   - {fileID: 815642923}
   - {fileID: 474088597}

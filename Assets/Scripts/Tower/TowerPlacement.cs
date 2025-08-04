@@ -7,7 +7,6 @@ public class TowerPlacement : MonoBehaviour
     [SerializeField] private LayerMask placementLayer;
     [SerializeField] private GameObject placementIndicatorPrefab;
     [SerializeField] private TowerButton[] towerButtons;
-    private float yOffset = 0.2f;
     private GameManager gameManager;
     private MoneyManager moneyManager;
     private TowerSelectionManager selectionManager;

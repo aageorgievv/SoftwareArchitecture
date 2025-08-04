@@ -10,12 +10,7 @@ public class EnemyController : MonoBehaviour
     private IMovable movable;
 
     [SerializeField]
-    private float health = 100f;
-    [SerializeField]
     private float speed = 2;
-
-    [SerializeField]
-    private int money = 100;
 
     [SerializeField]
     private EnemySpawner spawner;
@@ -60,17 +55,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float amount)
-    {
-        health -= amount;
-        Debug.Log($"{gameObject.name} took {amount} damage. Remaining HP: {health}");
-
-        if(health <= 0)
-        {
-            Die();
-        }
-    }
-
     public void Die()
     {
         if (spawner != null)
@@ -90,10 +74,5 @@ public class EnemyController : MonoBehaviour
             healthManager?.ReduceLife();
             Die();
         }
-    }
-
-    public int GetCarriedMoney()
-    {
-        return money;
     }
 }

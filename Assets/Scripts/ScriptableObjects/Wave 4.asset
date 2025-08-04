@@ -10,13 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6d542f3647b2a24f83635c84e500316, type: 3}
-  m_Name: Test
+  m_Name: Wave 4
   m_EditorClassIdentifier: 
   EnemyWaves:
+  - enemyPrefab: {fileID: 2963343655418757013, guid: bf983fedac7c74a4a8953100a335d89a, type: 3}
+    enemyAmount: 4
+    spawnDelay: 2
   - enemyPrefab: {fileID: 2963343655418757013, guid: b9e8baf3ab57e3f4d89ed754fcad70e3, type: 3}
-    enemyAmount: 1
+    enemyAmount: 4
+    spawnDelay: 2
+  - enemyPrefab: {fileID: 2963343655418757013, guid: b9e8baf3ab57e3f4d89ed754fcad70e3, type: 3}
+    enemyAmount: 4
     spawnDelay: 1
   - enemyPrefab: {fileID: 2963343655418757013, guid: bd72d56bdc5f3b24ea0f6ab4781f2b48, type: 3}
-    enemyAmount: 2
+    enemyAmount: 4
+    spawnDelay: 2
+  - enemyPrefab: {fileID: 2963343655418757013, guid: bd72d56bdc5f3b24ea0f6ab4781f2b48, type: 3}
+    enemyAmount: 4
     spawnDelay: 2
   waveCooldown: 2

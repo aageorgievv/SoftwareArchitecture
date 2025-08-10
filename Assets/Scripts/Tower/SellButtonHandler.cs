@@ -36,6 +36,7 @@ public class SellButtonHandler : MonoBehaviour
     {
         TowerBase tower = selectedTower;
         moneyManager.AddMoney(tower.MoneyCost);
+        tower.SetOccupiedSlot(null);
         Destroy(tower.gameObject);
         UpdateButtonState();
     }

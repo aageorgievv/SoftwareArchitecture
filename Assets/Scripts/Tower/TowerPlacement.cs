@@ -61,15 +61,15 @@ public class TowerPlacement : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, placementLayer))
         {
             TowerSlot towerSlot = hit.collider.GetComponent<TowerSlot>();
-            TowerBase selectedTower = selectionManager.GetSelectedTower();
+            TowerBase selectedPrefab = selectionManager.GetSelectedTowerPrefab();
 
-            if (towerSlot != null && selectedTower != null && !towerSlot.isOccupied)
+            if (towerSlot != null && selectedPrefab != null && !towerSlot.isOccupied)
             {
-                if (moneyManager.CanAfford(selectedTower.MoneyCost))
+                if (moneyManager.CanAfford(selectedPrefab.MoneyCost))
                 {
-                    moneyManager.SpendMoney(selectedTower.MoneyCost);
-                    Instantiate(selectedTower, towerSlot.transform.position, Quaternion.identity);
-                    towerSlot.OccupySlot();
+                    moneyManager.SpendMoney(selectedPrefab.MoneyCost);
+                    TowerBase selectedTower = Instantiate(selectedPrefab, towerSlot.transform.position, Quaternion.identity);
+                    selectedTower.SetOccupiedSlot(towerSlot);
                     HidePlacementIndicator();
                     showIndicator = false;
                     selectionManager.SetSelectedTower();

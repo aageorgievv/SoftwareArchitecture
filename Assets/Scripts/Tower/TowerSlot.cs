@@ -14,13 +14,8 @@ public class TowerSlot : MonoBehaviour
 {
     public bool isOccupied { get; private set; } = false;
 
-    public void OccupySlot()
+    public void SetIsOccupied(bool isOccupied)
     {
-        isOccupied = true;
-    }
-
-    public void FreeSlot()
-    {
-        isOccupied = false;
+        this.isOccupied = isOccupied;
     }
 }

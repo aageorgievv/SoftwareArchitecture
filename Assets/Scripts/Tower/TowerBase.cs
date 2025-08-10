@@ -10,6 +10,7 @@ using UnityEngine;
 /// </remarks>
 public abstract class TowerBase : MonoBehaviour
 {
+    public TowerSlot OccupiedSlot { get; private set; }
     public Attackable AttackBehaviour => attackBehaviour;
 
     [SerializeField]
@@ -72,6 +73,22 @@ public abstract class TowerBase : MonoBehaviour
         }
 
         return closestEnemy;
+    }
+
+    public void SetOccupiedSlot(TowerSlot slot)
+    {
+
+        if (OccupiedSlot !=  null)
+        {
+            OccupiedSlot.SetIsOccupied(false);
+        }
+
+        OccupiedSlot = slot;
+
+        if (OccupiedSlot != null)
+        {
+            OccupiedSlot.SetIsOccupied(true);
+        }
     }
 
     public void UpgradeStats(int attackRangeAmount, int attackCooldownAmount)

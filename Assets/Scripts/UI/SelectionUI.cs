@@ -32,7 +32,6 @@ public class SelectionUI : MonoBehaviour
     [SerializeField]
     private GameObject panel;
 
-
     private TowerSelectionManager selectionManager;
     void Start()
     {
@@ -57,4 +56,6 @@ public class SelectionUI : MonoBehaviour
         attackTypeText.text = $"Attack Type: {projectile.ProjectileType}";
         panel.SetActive(true);
     }
+
+
 }

@@ -24,6 +24,8 @@ public class TowerSelectionManager : MonoBehaviour, IManager
     [SerializeField] private TMP_Text upgradeCostText;
     [SerializeField] private TMP_Text upgradeRangeText;
     [SerializeField] private TMP_Text upgradeCooldownText;
+    [SerializeField] private LayerMask placementLayer;
+
 
     private TowerBase selectedTowerPrefab;
     private ProjectileBase selectedProjectilePrefab;
@@ -49,6 +51,7 @@ public class TowerSelectionManager : MonoBehaviour, IManager
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 TowerBase tower = hit.collider.GetComponent<TowerBase>();
+
                 if (tower != null)
                 {
                     SelectTower(tower);
@@ -86,7 +89,7 @@ public class TowerSelectionManager : MonoBehaviour, IManager
             sellButtonHandler.SelectTowerToSell(selectedTower);
         }
     }
-    public TowerBase GetSelectedTower()
+    public TowerBase GetSelectedTowerPrefab()
     {
         return selectedTowerPrefab;
     }

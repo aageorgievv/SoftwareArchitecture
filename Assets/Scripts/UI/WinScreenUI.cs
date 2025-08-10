@@ -27,7 +27,13 @@ public class WinScreenUI : MonoBehaviour
 
     public void ShowWinScreen()
     {
-        winScreen.SetActive(true);
+        if(winScreen.activeInHierarchy)
+        {
+            winScreen.SetActive(false);
+        } else
+        {
+            winScreen.SetActive(true);
+        }
     }
 
     private void RestartGame()

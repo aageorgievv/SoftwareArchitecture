@@ -5,15 +5,19 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Manages the overall game state, including build and combat phases.
+/// Central controller for game flow, managing states, timers, dependencies, and events.
 /// </summary>
 /// <remarks>
-/// - Implements `IManager` and provides a static manager lookup system.
-/// - Handles game state transitions between `BuildingPhase` and `CombatPhase`.
-/// - Manages dependencies like `HealthManager`, `MoneyManager`, and `EnemySpawner`.
-/// - Handles UI interactions such as time scaling and starting waves.
-/// - Listens for game events like wave completion, game over, and game win.
+/// - Implements `IManager` and registers itself and other managers in a global lookup dictionary.
+/// - Controls game state transitions between the building and combat phases.
+/// - Runs a countdown timer for the build phase and automatically starts the next wave.
+/// - Keeps track of the current wave number and remaining build phase time.
+/// - Listens for wave end, game over, and game win events to trigger state changes or UI updates.
+/// - Adjusts the game’s time scale via a UI slider.
+/// - Provides global access to registered managers through `GetManager<T>()`.
+/// - Unit test for Triggering Game Over instantly from the inspector vie [ContextMenu("Trigger Game Over")]""
 /// </remarks>
+
 
 public interface IManager
 {
@@ -63,7 +67,6 @@ public class GameManager : MonoBehaviour, IManager
 
     private Coroutine previousCoroutine;
 
-
     private void Awake()
     {
         if(healthManager == null)
@@ -102,8 +105,11 @@ public class GameManager : MonoBehaviour, IManager
         healthManager.OnGameOver += HandleGameOver;
         enemySpawner.OnGameWin += HandleGameWin;
 
-        timeScaleSlider.onValueChanged.AddListener(HandleTimeScaleValueChanged);
+        if(timeScaleSlider != null)
+        {
+            timeScaleSlider.onValueChanged.AddListener(HandleTimeScaleValueChanged);
 
+        }
         Time.timeScale = 1f; // reset timescale
     }
 
@@ -190,5 +196,12 @@ public class GameManager : MonoBehaviour, IManager
     public bool IsInBuildingPhase()
     {
         return CurrentGameState == EGameState.BuildingPhase;
+    }
+
+    [ContextMenu("Trigger Game Over")]
+    public void TriggerGameOver()
+    {
+        healthManager.TriggerGameOver();
+        Time.timeScale = 0f;
     }
 }

@@ -6,13 +6,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Handles the tower selection button in the UI, triggering the selection of a tower to buy.
+/// Handles the UI button for selecting a tower to buy.
 /// </summary>
 /// <remarks>
-/// - Raises an event when a tower is bought (`OnTowerBought`).
-/// - Initializes a button to select a tower when clicked.
-/// - Calls the `TowerSelectionManager` to select the specified tower and its projectile.
+/// - Raises `OnTowerSelected` when the button is clicked.
+/// - Calls `TowerSelectionManager` to set the selected tower prefab and its projectile.
+/// - Updates button interactability every frame based on the player's money and whether the game is in the building phase.
+/// - Changes the button's color to indicate whether the tower can be afforded.
+/// - Subscribes and unsubscribes from the button's click event on enable/disable.
 /// </remarks>
+
 
 public class TowerButton : MonoBehaviour
 {

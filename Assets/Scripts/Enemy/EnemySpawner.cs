@@ -4,14 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Manages enemy wave spawning and tracks active enemies.
+/// Controls the spawning of enemies in waves and manages their lifecycle.
 /// </summary>
 /// <remarks>
-/// - Spawns enemies in waves based on `WaveConfig` data.
-/// - Uses coroutines to control enemy spawning over time.
-/// - Assigns travel points and behaviors to spawned enemies.
-/// - Triggers `OnWaveEnd` when all enemies in a wave are defeated.
-/// - Triggers `OnGameWin` when all waves are completed.
+/// - Spawns multiple waves of enemies defined by a list of WaveConfig.
+/// - Each wave consists of one or more enemy sets EnemySettings that spawn enemies with delays and cooldowns.
+/// - Spawning is handled asynchronously using coroutines to allow timed spawning of enemies and sets.
+/// - Assigns predefined travel points to enemies via their MoveBehaviour component after instantiation.
+/// - Tracks all spawned enemies and listens for their death events to update active enemy count.
+/// - Raises OnWaveEnd event when all enemies of the current wave are defeated and no more are spawning.
+/// - Raises OnGameWin event when all waves have been completed and all enemies defeated.
+/// - Logs detailed debug information about spawning progress and state changes.
+/// - Toggle for instantKillEnabled for whenever the enemies get shot by a tower
 /// </remarks>
 
 public class EnemySpawner : MonoBehaviour
@@ -25,6 +29,7 @@ public class EnemySpawner : MonoBehaviour
     private List<Transform> travelPoints;
     [SerializeField]
     private Transform spawnPoint;
+    [SerializeField] private bool instantKillEnabled = false;
 
     private readonly List<EnemyBase> spawnedEnemies = new List<EnemyBase>();
 
@@ -91,6 +96,7 @@ public class EnemySpawner : MonoBehaviour
     {
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
         EnemyBase enemyBase = enemy.GetComponent<EnemyBase>();
+        enemyBase.InstantKill = instantKillEnabled;
         enemyBase.OnDeathEvent += HandleEnemyDeathEvent;
         spawnedEnemies.Add(enemyBase);
         MoveBehaviour moveBehaviour = enemy.GetComponent<MoveBehaviour>();
@@ -121,6 +127,16 @@ public class EnemySpawner : MonoBehaviour
                 Debug.Log("Wave ended");
                 OnWaveEnd?.Invoke();
             }
+        }
+    }
+
+    public void SetInstantKillEnabled(bool state)
+    {
+        instantKillEnabled = enabled;
+
+        foreach (var enemy in spawnedEnemies)
+        {
+            enemy.InstantKill = instantKillEnabled;
         }
     }
 }

@@ -3,8 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Handles the sell button UI functionality for selling the currently selected tower.
+/// </summary>
+/// <remarks>
+/// - Stores the currently selected tower to be sold.
+/// - Enables or disables the sell button depending on whether a tower is selected and the game is in the building phase.
+/// - Sells the selected tower when clicked, refunding its cost to the player and freeing its occupied slot.
+/// - Updates the button's interactability whenever a new tower is selected or sold.
+/// </remarks>
+
 public class SellButtonHandler : MonoBehaviour
 {
+
     [SerializeField] private Button sellButton;
 
     private LayerMask towerLayer;

@@ -1,13 +1,16 @@
 using UnityEngine;
 
 /// <summary>
-/// A base class for all tower types in the game, providing functionality for attacking enemies and upgrading tower stats.
+/// Abstract base class for all towers, handling targeting, attacking, slot management, and upgrades.
 /// </summary>
 /// <remarks>
-/// - Provides basic attack behavior with configurable attack range, cooldown, and cost.
-/// - Automatically attacks the closest enemy within range when the cooldown period has passed.
-/// - Can be upgraded to increase attack range and decrease attack cooldown.
+/// - Searches for and attacks the closest enemy within range when the attack cooldown expires.
+/// - Uses an `Attackable` component to perform the attack logic.
+/// - Stores and manages the `TowerSlot` the tower is placed in.
+/// - Supports upgrading to a new tower prefab if available, deducting money and replacing the current tower.
+/// - Provides stats and costs for both the base tower and its upgraded version.
 /// </remarks>
+
 public abstract class TowerBase : MonoBehaviour
 {
     public TowerSlot OccupiedSlot { get; private set; }

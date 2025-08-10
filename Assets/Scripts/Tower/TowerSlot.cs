@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// A class representing a slot where a tower can be placed in the game.
+/// Represents a buildable location in the game where a tower can be placed.
 /// </summary>
 /// <remarks>
-/// - Keeps track of whether the slot is occupied by a tower.
-/// - Provides methods to occupy or free the slot.
+/// - Tracks whether the slot currently has a tower occupying it.
+/// - Provides a method to update the slot's occupied status.
+/// - Used by towers to mark their placement and by game logic to determine available build spots.
 /// </remarks>
+
 
 public class TowerSlot : MonoBehaviour
 {

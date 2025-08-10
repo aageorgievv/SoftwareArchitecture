@@ -19,6 +19,7 @@ using UnityEngine;
 public abstract class EnemyBase : MonoBehaviour
 {
     public static event Action<Vector3, int> OnEnemyDefeated;
+    public bool InstantKill { get; set; } = false;
 
     public event Action OnHealthChanged;
     public event Action<EnemyBase> OnDeathEvent;
@@ -93,13 +94,13 @@ public abstract class EnemyBase : MonoBehaviour
 
     public virtual void TakeDamage(float amount)
     {
-        if(canTakeDamage)
+        if (canTakeDamage)
         {
             health -= amount;
             OnHealthChanged?.Invoke();
         }
 
-        if (health <= 0)
+        if (health <= 0 || InstantKill)
         {
             Die();
             OnEnemyDefeated?.Invoke(transform.position, money);

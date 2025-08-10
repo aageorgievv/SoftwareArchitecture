@@ -5,13 +5,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Tracks and updates the UI elements related to the player's health, wave number, money, and build phase timer.
+/// Manages and updates the UI elements showing the player's health, wave number, money, and build phase timer.
 /// </summary>
 /// <remarks>
-/// - Subscribes to events from `MoneyManager`, `HealthManager`, and `GameManager` to update UI.
-/// - Updates the health, money, wave, and build phase timer text in the UI.
-/// - Unsubscribes from events when the object is destroyed.
+/// - Subscribes to events from `MoneyManager`, `HealthManager`, and `GameManager` to update health, money, and wave text.
+/// - Updates the build phase timer every frame based on the remaining time from `GameManager`.
+/// - Initializes UI values at start and unsubscribes from events on destruction.
 /// </remarks>
+
 
 public class  UITracker : MonoBehaviour
 {

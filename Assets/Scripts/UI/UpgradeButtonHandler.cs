@@ -2,13 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// Manages the behavior of the upgrade button in the UI for upgrading towers.
+/// Controls the upgrade button UI for upgrading the currently selected tower.
 /// </summary>
 /// <remarks>
-/// - Listens for button click to upgrade the selected tower.
-/// - Subscribes to money changes to enable or disable the upgrade button based on available funds.
-/// - Updates button interactivity based on the selected tower and player's current money.
+/// - Stores the currently selected tower and enables the upgrade button only if it can be upgraded and the player can afford it.
+/// - Disables the upgrade button when not in the building phase.
+/// - Upgrades the selected tower when clicked, replacing it with its upgraded version and updating the selection.
+/// - Interactivity is updated whenever a new tower is selected for upgrade.
 /// </remarks>
+
 
 
 public class UpgradeButtonHandler : MonoBehaviour

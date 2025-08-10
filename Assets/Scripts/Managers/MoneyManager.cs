@@ -19,20 +19,35 @@ public class MoneyManager : MonoBehaviour, IManager
 
     [SerializeField]
     private int money = 500;
+    [SerializeField] bool infiniteMoney = false;
 
     public int GetMoney()
     {
+        if (infiniteMoney)
+        {
+            return int.MaxValue;
+        }
         return money;
     }
 
     public bool CanAfford(int amount)
     {
+        if (infiniteMoney)
+        {
+            return true;
+        }
         return money >= amount;
     }
 
     public void SpendMoney(int amount)
     {
-        if(CanAfford(amount))
+        if (infiniteMoney)
+        {
+            OnMoneyChanged?.Invoke(int.MaxValue);
+            return;
+        }
+
+        if (CanAfford(amount))
         {
             money -= amount;
             OnMoneyChanged?.Invoke(money);

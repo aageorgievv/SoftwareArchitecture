@@ -11,6 +11,7 @@ using UnityEngine;
 /// - Tracks current health and notifies listeners when health changes.
 /// - Invokes `OnGameOver` when health reaches zero.
 /// - Provides a method to reduce health (`ReduceLife()`) and retrieve current health.
+/// - Toggle invincibility via editor
 /// </remarks>
 
 public class HealthManager : MonoBehaviour, IManager
@@ -20,6 +21,7 @@ public class HealthManager : MonoBehaviour, IManager
 
     [SerializeField]
     private int maxHealth = 10;
+    [SerializeField] bool invincibility = false;
     private int currentHealth;
 
     void Awake()
@@ -34,6 +36,11 @@ public class HealthManager : MonoBehaviour, IManager
 
     public void ReduceLife()
     {
+        if(invincibility)
+        {
+            return;
+        }
+
         currentHealth--;
         Debug.Log($"Health: {currentHealth}");
         OnHealthChanged?.Invoke(currentHealth);
@@ -47,5 +54,10 @@ public class HealthManager : MonoBehaviour, IManager
     public int GetCurrentHealth()
     {
         return currentHealth;
+    }
+
+    public void TriggerGameOver()
+    {
+        OnGameOver?.Invoke();
     }
 }

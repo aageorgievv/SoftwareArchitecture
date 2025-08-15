@@ -9,6 +9,7 @@ public class DefaultProjectile : ProjectileBase
         projectileType = EProjectileType.SingleTarget;
         base.Start();
     }
+    //Deals damage to enemies
     protected override void OnHitEnemy(EnemyBase enemy)
     {
         enemy.TakeDamage(damage);

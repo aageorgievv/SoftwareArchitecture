@@ -21,6 +21,7 @@ public class MoneyManager : MonoBehaviour, IManager
     private int money = 500;
     [SerializeField] bool infiniteMoney = false;
 
+    //Returns the current money amount, or int.MaxValue if infinite money is enabled.
     public int GetMoney()
     {
         if (infiniteMoney)
@@ -30,6 +31,7 @@ public class MoneyManager : MonoBehaviour, IManager
         return money;
     }
 
+    //Checks if the player has enough money to cover the specified amount.
     public bool CanAfford(int amount)
     {
         if (infiniteMoney)
@@ -39,6 +41,7 @@ public class MoneyManager : MonoBehaviour, IManager
         return money >= amount;
     }
 
+    //Deducts the specified amount if affordable and triggers the money changed event.
     public void SpendMoney(int amount)
     {
         if (infiniteMoney)
@@ -54,6 +57,7 @@ public class MoneyManager : MonoBehaviour, IManager
         }
     }
 
+    //Increases the current money by the specified amount and triggers the money changed event.
     public void AddMoney(int amount)
     {
         money += amount;

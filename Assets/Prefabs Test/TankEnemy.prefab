@@ -159,7 +159,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 150
   speed: 1
-  money: 150
+  money: 35
   canBeStunned: 1
   canTakeDamage: 1
   moveBehaviour: {fileID: 8530804222398655364}

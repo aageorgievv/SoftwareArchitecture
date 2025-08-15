@@ -34,6 +34,7 @@ public class HealthManager : MonoBehaviour, IManager
 
     }
 
+    //Decreases current health by one (unless invincibility is enabled) and triggers game over if health reaches zero.
     public void ReduceLife()
     {
         if(invincibility)
@@ -51,11 +52,13 @@ public class HealthManager : MonoBehaviour, IManager
         }
     }
 
+    //Returns the player's current health value.
     public int GetCurrentHealth()
     {
         return currentHealth;
     }
 
+    //Triggers Game Over.
     public void TriggerGameOver()
     {
         OnGameOver?.Invoke();

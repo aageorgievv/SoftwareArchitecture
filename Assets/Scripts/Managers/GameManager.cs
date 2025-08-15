@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour, IManager
         StartBuildPhase();
     }
 
+    //Retrieves a registered manager of the specified type - Service Locator
     public static T GetManager<T>() where T : IManager
     {
         return (T)managers[typeof(T)];
@@ -131,6 +132,7 @@ public class GameManager : MonoBehaviour, IManager
         timeScaleSlider.onValueChanged.RemoveListener(HandleTimeScaleValueChanged);
     }
 
+    //Switches the game state to the build phase and starts the build phase countdown.
     private void StartBuildPhase()
     {
         Debug.Log("GameState: BuildPhase");
@@ -144,6 +146,7 @@ public class GameManager : MonoBehaviour, IManager
         previousCoroutine = StartCoroutine(BuildPhaseCountDown());
     }
 
+    //Coroutine that counts down the build phase timer before starting the combat phase.
     private IEnumerator BuildPhaseCountDown()
     {
         BuildPhaseTimeLeft = buildPhaseDuration;
@@ -157,6 +160,7 @@ public class GameManager : MonoBehaviour, IManager
         StartCombatPhase();
     }
 
+    //Switches the game state to the combat phase, starts the next wave, and updates the wave number.
     private void StartCombatPhase()
     {
         Debug.Log("GameState: CombatPhase");
@@ -166,38 +170,45 @@ public class GameManager : MonoBehaviour, IManager
         OnWaveChanged?.Invoke(waveNumber);
     }
 
+    //Invokes the game over event when the player loses.
     private void HandleGameOver()
     {
         OnGameOverEvent?.Invoke();
     }
 
+    //Displays the win screen when all waves are completed.
     private void HandleGameWin()
     {
         Debug.Log("You Win!");
         winScreenUI.ShowWinScreen();
     }
 
+    //Adjusts the game’s time scale based on the slider value.
     private void HandleTimeScaleValueChanged(float value)
     {
         Time.timeScale = value;
         Debug.Log($"TimeScale: {value}");
     }
 
+    //Returns the current wave number.
     public int GetWaveNumber()
     {
         return waveNumber;
     }
 
+    //Returns the remaining build phase time in seconds.
     public float GetBuildPhaseTimeLeft()
     {
         return BuildPhaseTimeLeft;
     }
 
+    //Checks if the game is currently in the build phase.
     public bool IsInBuildingPhase()
     {
         return CurrentGameState == EGameState.BuildingPhase;
     }
 
+    //Forces a game over state and pauses the game (for testing via inspector).
     [ContextMenu("Trigger Game Over")]
     public void TriggerGameOver()
     {

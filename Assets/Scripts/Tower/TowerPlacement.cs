@@ -72,7 +72,7 @@ public class TowerPlacement : MonoBehaviour
                     selectedTower.SetOccupiedSlot(towerSlot);
                     HidePlacementIndicator();
                     showIndicator = false;
-                    selectionManager.SetSelectedTower();
+                    selectionManager.ClearSelectedTower();
                 }
                 else
                 {

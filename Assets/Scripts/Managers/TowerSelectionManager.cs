@@ -34,6 +34,7 @@ public class TowerSelectionManager : MonoBehaviour, IManager
     private ProjectileBase selectedProjectilePrefab;
     private TowerBase selectedTower;
 
+    //Sets the tower and projectile prefabs for purchase and notifies listeners.
     public void SelectTowerToBuy(TowerBase towerPrefab, ProjectileBase projectilePrefab)
     {
         selectedTowerPrefab = towerPrefab;
@@ -48,6 +49,7 @@ public class TowerSelectionManager : MonoBehaviour, IManager
 
     private void Update()
     {
+        //Handles mouse input to select towers in the scene while avoiding UI clicks.
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) // Avoid UI clicks
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -66,6 +68,7 @@ public class TowerSelectionManager : MonoBehaviour, IManager
         }
     }
 
+    //Sets the selected in-scene tower, updates upgrade stats UI, and passes it to upgrade/sell handlers.
     private void SelectTower(TowerBase tower)
     {
         selectedTower = tower;
@@ -92,16 +95,15 @@ public class TowerSelectionManager : MonoBehaviour, IManager
             sellButtonHandler.SelectTowerToSell(selectedTower);
         }
     }
+
+    //Returns the tower prefab currently selected for purchase.
     public TowerBase GetSelectedTowerPrefab()
     {
         return selectedTowerPrefab;
     }
-    public TowerBase GetSelectedTowerToUpgrade()
-    {
-        return selectedTower;
-    }
 
-    public void SetSelectedTower()
+    //Clears the selected tower prefab.
+    public void ClearSelectedTower()
     {
         selectedTowerPrefab = null;
     }

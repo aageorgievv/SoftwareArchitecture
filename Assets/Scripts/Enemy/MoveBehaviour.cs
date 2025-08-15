@@ -39,6 +39,7 @@ public class MoveBehaviour : MonoBehaviour, IMovable
         agent = GetComponent<NavMeshAgent>();
     }
 
+    //Moves the enemy along travel points and invokes OnDestinationReached when the final point is reached.
     public void Move()
     {
         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
@@ -58,6 +59,7 @@ public class MoveBehaviour : MonoBehaviour, IMovable
         }
     }
 
+    //Assigns a list of travel points and sets the first destination for the NavMeshAgent.
     public void SetTravelPoints(List<Transform> travelPoints)
     {
         this.travelPoints = travelPoints;
@@ -72,11 +74,13 @@ public class MoveBehaviour : MonoBehaviour, IMovable
         }
     }
 
+    //Updates the NavMeshAgent's movement speed.
     public void SetSpeed(float speed)
     {
         agent.speed = speed;
     }
 
+    //Starts or stops the NavMeshAgent's movement.
     public void IsAgentStopped(bool state)
     {
         agent.isStopped = state;

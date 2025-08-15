@@ -17,8 +17,9 @@ public class SellButtonHandler : MonoBehaviour
 {
 
     [SerializeField] private Button sellButton;
+    [SerializeField] private Button upgradeButton;
 
-    private LayerMask towerLayer;
+
     private TowerBase selectedTower;
     private GameManager gameManager;
     private MoneyManager moneyManager;
@@ -50,6 +51,9 @@ public class SellButtonHandler : MonoBehaviour
         tower.SetOccupiedSlot(null);
         Destroy(tower.gameObject);
         UpdateButtonState();
+        upgradeButton.interactable = false;
+        sellButton.interactable = false;
+
     }
 
     private void UpdateButtonState()

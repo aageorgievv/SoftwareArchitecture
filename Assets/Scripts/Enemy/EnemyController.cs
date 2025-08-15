@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//CLASS IS NOT BEING USED
+
 public class EnemyController : MonoBehaviour
 {
     [SerializeField]
@@ -76,3 +78,5 @@ public class EnemyController : MonoBehaviour
         }*/
     }
 }
+
+//CLASS IS NOT BEING USED

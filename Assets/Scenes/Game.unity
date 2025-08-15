@@ -1171,6 +1171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeButton: {fileID: 81792026}
+  sellButton: {fileID: 1445234015}
 --- !u!114 &81792026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15989,6 +15990,7 @@ MonoBehaviour:
   - {fileID: 1826096492}
   - {fileID: 236080606}
   spawnPoint: {fileID: 1043970893}
+  instantKillEnabled: 0
 --- !u!65 &1043970890
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20751,6 +20753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sellButton: {fileID: 1445234015}
+  upgradeButton: {fileID: 81792026}
 --- !u!1001 &1451626719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26471,6 +26474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  invincibility: 0
 --- !u!1001 &1862167913
 PrefabInstance:
   m_ObjectHideFlags: 0

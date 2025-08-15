@@ -16,6 +16,7 @@ using UnityEngine.UI;
 public class UpgradeButtonHandler : MonoBehaviour
 {
     [SerializeField] private Button upgradeButton;
+    [SerializeField] private Button sellButton;
     private TowerBase selectedTower;
 
     private GameManager gameManager;
@@ -53,6 +54,7 @@ public class UpgradeButtonHandler : MonoBehaviour
         {
             Debug.Log("Tower Upgraded");
             SelectTowerForUpgrade(upgradedTower);
+            sellButton.interactable = false;
         }
     }
 }

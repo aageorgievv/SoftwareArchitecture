@@ -84,14 +84,17 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
+
     protected virtual void Update()
     {
+        // Moves the enemy each frame if it is not stunned.
         if (!isStunned)
         {
             movable?.Move();
         }
     }
 
+    // Reduces health by the given amount and checks if the enemy should die.
     public virtual void TakeDamage(float amount)
     {
         if (canTakeDamage)
@@ -107,6 +110,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
+    // Handles enemy death: rewards player, triggers events, and destroys the object.
     protected virtual void Die()
     {
         StopAllCoroutines();
@@ -115,6 +119,7 @@ public abstract class EnemyBase : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // Called when the enemy reaches its destination; reduces player life and kills the enemy.
     protected virtual void HandleDestinationReached(MoveBehaviour move)
     {
         if (move == moveBehaviour)
@@ -125,6 +130,7 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
+    // Stuns the enemy for a given duration, stopping its movement temporarily.
     public void Stun(float stunDuration)
     {
         if (!canBeStunned || isStunned)
@@ -135,6 +141,7 @@ public abstract class EnemyBase : MonoBehaviour
         StartCoroutine(StunEffect(stunDuration));
     }
 
+    // Coroutine that stops enemy movement for the stun duration, then resumes movement.
     private IEnumerator StunEffect(float duration)
     {
         isStunned = true;
@@ -144,6 +151,8 @@ public abstract class EnemyBase : MonoBehaviour
         moveBehaviour.IsAgentStopped(false);
     }
 
+
+    // Returns the enemy's current health as a percentage of its maximum health.
     public float GetHealthPercentage()
     {
         return health / maxHealth;

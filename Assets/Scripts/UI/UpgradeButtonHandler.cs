@@ -38,6 +38,10 @@ public class UpgradeButtonHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Sets the tower to upgrade and enables the button if upgrade is possible and affordable.
+    /// </summary>
+    /// <param name="tower"></param>
     public void SelectTowerForUpgrade(TowerBase tower)
     {
         selectedTower = tower;
@@ -46,6 +50,9 @@ public class UpgradeButtonHandler : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Attempts to upgrade the selected tower, updates selection if successful.
+    /// </summary>
     private void UpgradeSelectedTower()
     {
         TowerBase upgradedTower = selectedTower?.TowerUpgrade();

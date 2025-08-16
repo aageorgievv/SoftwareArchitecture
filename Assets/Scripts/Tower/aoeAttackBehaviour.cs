@@ -20,6 +20,7 @@ public class AoeAttackBehaviour : Attackable
         Vector3.right
 };
 
+    //shoots a projectile in a cross directions - AOE
     public override void Attack(Transform enemy)
     {
         foreach (Vector3 dir in directions)

@@ -62,6 +62,9 @@ public class TowerButton : MonoBehaviour
         button.onClick.RemoveListener(SelectTower);
     }
 
+    /// <summary>
+    /// Sets the selected tower in TowerSelectionManager and invokes OnTowerSelected.
+    /// </summary>
     private void SelectTower()
     {
         TowerSelectionManager towerSelectionManager = GameManager.GetManager<TowerSelectionManager>();
@@ -69,6 +72,10 @@ public class TowerButton : MonoBehaviour
         OnTowerSelected?.Invoke();
     }
 
+    /// <summary>
+    /// Updates button interactivity and color depending on current money.
+    /// </summary>
+    /// <param name="currentMoney"></param>
     private void UpdateButtonState(int currentMoney)
     {
         TowerBase tower = towerPrefab.GetComponent<TowerBase>();

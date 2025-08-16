@@ -53,21 +53,37 @@ public class  UITracker : MonoBehaviour
         gameManager.OnWaveChanged -= UpdateWaveText;
     }
 
+    /// <summary>
+    /// Updates the money UI when the player's money changes.
+    /// </summary>
+    /// <param name="money"></param>
     private void UpdateMoneyText(int money)
     {
         moneyText.text = $"$ {money}";
     }
 
+    /// <summary>
+    /// Updates the wave UI when the wave number changes.
+    /// </summary>
+    /// <param name="wave"></param>
     private void UpdateWaveText(int wave)
     {
         waveText.text = $"Wave: {wave}";
     }
 
+    /// <summary>
+    /// Updates the health UI when the player's health changes.
+    /// </summary>
+    /// <param name="health"></param>
     private void UpdateHealthText(int health)
     {
         healthText.text = $"{health}";
     }
 
+    /// <summary>
+    /// Updates the timer UI during the build phase.
+    /// </summary>
+    /// <param name="timeLeft"></param>
     private void UpdateBuildPhaseTimer(float timeLeft)
     {
         buildPhaseTimerText.text = $"{timeLeft:0}";

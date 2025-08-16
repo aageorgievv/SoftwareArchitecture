@@ -14,6 +14,7 @@ using UnityEngine;
 
 public class AttackBehaviour : Attackable
 {
+    //Instantiates a projectile, calculates direction to the target enemy, and initializes so the projectiles gets destroyed after a certain time
     public override void Attack(Transform enemy)
     {
         ProjectileBase projectileObject = Instantiate(projectilePrefab, transform.position, Quaternion.identity);

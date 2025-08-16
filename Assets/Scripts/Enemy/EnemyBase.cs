@@ -94,7 +94,10 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    // Reduces health by the given amount and checks if the enemy should die.
+    /// <summary>
+    /// Reduces health by the given amount and checks if the enemy should die.
+    /// </summary>
+    /// <param name="amount"></param>
     public virtual void TakeDamage(float amount)
     {
         if (canTakeDamage)
@@ -110,7 +113,9 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    // Handles enemy death: rewards player, triggers events, and destroys the object.
+    /// <summary>
+    /// Handles enemy death: rewards player, triggers events, and destroys the object.
+    /// </summary>
     protected virtual void Die()
     {
         StopAllCoroutines();
@@ -119,7 +124,10 @@ public abstract class EnemyBase : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // Called when the enemy reaches its destination; reduces player life and kills the enemy.
+    /// <summary>
+    /// Called when the enemy reaches its destination; reduces player life and kills the enemy.
+    /// </summary>
+    /// <param name="move"></param>
     protected virtual void HandleDestinationReached(MoveBehaviour move)
     {
         if (move == moveBehaviour)
@@ -130,7 +138,10 @@ public abstract class EnemyBase : MonoBehaviour
         }
     }
 
-    // Stuns the enemy for a given duration, stopping its movement temporarily.
+    /// <summary>
+    /// Stuns the enemy for a given duration, stopping its movement temporarily.
+    /// </summary>
+    /// <param name="stunDuration"></param>
     public void Stun(float stunDuration)
     {
         if (!canBeStunned || isStunned)
@@ -141,7 +152,11 @@ public abstract class EnemyBase : MonoBehaviour
         StartCoroutine(StunEffect(stunDuration));
     }
 
-    // Coroutine that stops enemy movement for the stun duration, then resumes movement.
+    /// <summary>
+    /// Coroutine that stops enemy movement for the stun duration, then resumes movement.
+    /// </summary>
+    /// <param name="duration"></param>
+    /// <returns></returns>
     private IEnumerator StunEffect(float duration)
     {
         isStunned = true;
@@ -152,7 +167,10 @@ public abstract class EnemyBase : MonoBehaviour
     }
 
 
-    // Returns the enemy's current health as a percentage of its maximum health.
+    /// <summary>
+    /// Returns the enemy's current health as a percentage of its maximum health.
+    /// </summary>
+    /// <returns></returns>
     public float GetHealthPercentage()
     {
         return health / maxHealth;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//CLASS NOT IN USE
 public enum ETowerType
 {
     Normal,
@@ -12,7 +13,6 @@ public enum ETowerType
 
 public abstract class TowerUpgrade : MonoBehaviour
 {
-    // Abstract property declaration
     public abstract ETowerType towerType { get; }
 
     public class BasicTower : TowerUpgrade
@@ -35,3 +35,5 @@ public abstract class TowerUpgrade : MonoBehaviour
         public override ETowerType towerType => ETowerType.Earth;
     }
 }
+
+//CLASS NOT IN USE

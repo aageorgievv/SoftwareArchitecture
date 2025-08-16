@@ -56,7 +56,10 @@ public abstract class ProjectileBase : MonoBehaviour
 
     protected abstract void OnHitEnemy(EnemyBase enemy);
 
-    //Detects collisions with enemies, calls OnHitEnemy, and destroys the projectile.
+    /// <summary>
+    /// Detects collisions with enemies, calls OnHitEnemy, and destroys the projectile.
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         EnemyBase enemy = other.GetComponent<EnemyBase>();

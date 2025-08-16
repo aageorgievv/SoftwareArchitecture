@@ -44,6 +44,9 @@ public class SellButtonHandler : MonoBehaviour
         UpdateButtonState();
     }
 
+    /// <summary>
+    /// Refunds the tower's cost, clears its slot, destroys it, and disables buttons.
+    /// </summary>
     private void SellSelectedTower()
     {
         TowerBase tower = selectedTower;
@@ -56,6 +59,9 @@ public class SellButtonHandler : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Enables or disables the sell button depending on tower selection.
+    /// </summary>
     private void UpdateButtonState()
     {
         if (selectedTower != null)

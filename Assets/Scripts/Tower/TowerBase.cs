@@ -56,6 +56,10 @@ public abstract class TowerBase : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Searches for the nearest enemy within attack range.
+    /// </summary>
+    /// <returns></returns>
     private Transform FindClosestEnemy()
     {
         //Possibly place a layer masks so it detects only enemies.
@@ -78,6 +82,10 @@ public abstract class TowerBase : MonoBehaviour
         return closestEnemy;
     }
 
+    /// <summary>
+    /// Assigns or clears the tower slot, updating its occupied state.
+    /// </summary>
+    /// <param name="slot"></param>
     public void SetOccupiedSlot(TowerSlot slot)
     {
 
@@ -94,6 +102,11 @@ public abstract class TowerBase : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Increases tower range and reduces cooldown (to a minimum of 1).
+    /// </summary>
+    /// <param name="attackRangeAmount"></param>
+    /// <param name="attackCooldownAmount"></param>
     public void UpgradeStats(int attackRangeAmount, int attackCooldownAmount)
     {
         attackRange += attackRangeAmount;
@@ -101,11 +114,19 @@ public abstract class TowerBase : MonoBehaviour
         Debug.Log($"Tower upgraded! New Range: {attackRange}, New Cooldown: {attackCooldown}");
     }
 
+    /// <summary>
+    /// Returns the current tower's money cost.
+    /// </summary>
+    /// <returns></returns>
     public int GetTowerCost()
     {
         return moneyCost;
     }
 
+    /// <summary>
+    /// Spends money to replace the tower with its upgraded prefab.
+    /// </summary>
+    /// <returns></returns>
     public TowerBase TowerUpgrade()
     {
         MoneyManager moneyManager = GameManager.GetManager<MoneyManager>();

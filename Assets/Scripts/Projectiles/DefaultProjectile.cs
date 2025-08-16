@@ -9,7 +9,11 @@ public class DefaultProjectile : ProjectileBase
         projectileType = EProjectileType.SingleTarget;
         base.Start();
     }
-    //Deals damage to enemies
+
+    /// <summary>
+    /// Deals damage to enemies - single target
+    /// </summary>
+    /// <param name="enemy"></param>
     protected override void OnHitEnemy(EnemyBase enemy)
     {
         enemy.TakeDamage(damage);

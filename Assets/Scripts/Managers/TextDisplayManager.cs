@@ -38,7 +38,11 @@ public class TextDisplayManager : MonoBehaviour, IManager
         EnemyBase.OnEnemyDefeated -= ShowMoneyText;
     }
 
-    //Instantiates a floating text object at the given position showing earned money, then starts its fade/move coroutine.
+    /// <summary>
+    /// Instantiates a floating text object at the given position showing earned money, then starts its fade/move coroutine.
+    /// </summary>
+    /// <param name="position"></param>
+    /// <param name="money"></param>
     private void ShowMoneyText(Vector3 position, int money)
     {
         if (textPrefab == null)
@@ -61,7 +65,12 @@ public class TextDisplayManager : MonoBehaviour, IManager
         StartCoroutine(FadeAndMoveText(textObject, textComponent));
     }
 
-    //Coroutine that moves the floating text upward, faces it toward the camera, fades it out, and then destroys it.
+    /// <summary>
+    /// Coroutine that moves the floating text upward, faces it toward the camera, fades it out, and then destroys it.
+    /// </summary>
+    /// <param name="textObj"></param>
+    /// <param name="textComponent"></param>
+    /// <returns></returns>
     private IEnumerator FadeAndMoveText(GameObject textObj, TMP_Text textComponent)
     {
         float duration = 1.5f;

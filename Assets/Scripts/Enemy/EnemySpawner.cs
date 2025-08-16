@@ -46,7 +46,9 @@ public class EnemySpawner : MonoBehaviour
         //Debug.Log($"Active Enemies: {spawnedEnemies.Count}");
     }
 
-    //Begins spawning the next wave of enemies if there are any waves remaining.
+    /// <summary>
+    /// Begins spawning the next wave of enemies if there are any waves remaining.
+    /// </summary>
     public void StartNextWave()
     {
         if(currentWaveIndex < waves.Count)
@@ -59,7 +61,11 @@ public class EnemySpawner : MonoBehaviour
     }
 
 
-    //Coroutine that spawns all enemy sets in a given wave with delays between sets.
+    /// <summary>
+    /// Coroutine that spawns all enemy sets in a given wave with delays between sets.
+    /// </summary>
+    /// <param name="waveConfig"></param>
+    /// <returns></returns>
     private IEnumerator SpawnWave(WaveConfig waveConfig)
     {
         isSpawning = true;
@@ -81,7 +87,11 @@ public class EnemySpawner : MonoBehaviour
         isSpawning = false;
     }
 
-    //Coroutine that spawns a specific set of enemies with a delay between each enemy.
+    /// <summary>
+    /// Coroutine that spawns a specific set of enemies with a delay between each enemy.
+    /// </summary>
+    /// <param name="enemySet"></param>
+    /// <returns></returns>
     private IEnumerator SpawnEnemySet(EnemySettings enemySet)
     {
         Debug.Log($"Spawn Enemy Set");
@@ -94,7 +104,10 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    //Instantiates a single enemy and assigns travel points.
+    /// <summary>
+    /// Instantiates a single enemy and assigns travel points.
+    /// </summary>
+    /// <param name="enemyPrefab"></param>
     private void SpawnEnemy(GameObject enemyPrefab)
     {
         GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
@@ -110,7 +123,10 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    //Handles cleanup when an enemy dies and triggers wave or game completion events if applicable.
+    /// <summary>
+    /// Handles cleanup when an enemy dies and triggers wave or game completion events if applicable.
+    /// </summary>
+    /// <param name="enemyBase"></param>
     private void HandleEnemyDeathEvent(EnemyBase enemyBase)
     {
         enemyBase.OnDeathEvent -= HandleEnemyDeathEvent;
@@ -134,7 +150,10 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    //Toggles instant kill for all currently spawned enemies.
+    /// <summary>
+    /// Toggles instant kill for all currently spawned enemies.
+    /// </summary>
+    /// <param name="state"></param>
     public void SetInstantKillEnabled(bool state)
     {
         instantKillEnabled = enabled;

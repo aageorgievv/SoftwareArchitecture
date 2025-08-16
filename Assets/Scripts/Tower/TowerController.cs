@@ -28,6 +28,7 @@ public class TowerController : MonoBehaviour
         }
     }
 
+    //Finds the closest enemy and attacks if within cooldown time.
     void Update()
     {
         Transform target = FindClosestEnemy();
@@ -40,9 +41,12 @@ public class TowerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Searches for the nearest enemy within attack range.
+    /// </summary>
+    /// <returns></returns>
     private Transform FindClosestEnemy()
     {
-        //Possibly place a layer masks so it detects only enemies.
         int enemyLayer = LayerMask.GetMask("Enemy");
         Collider[] colliders = Physics.OverlapSphere(transform.position, attackRange, enemyLayer);
         Transform closestEnemy = null;

@@ -54,6 +54,7 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
+    //Places the selected tower on a valid slot if conditions are met.
     private void PlaceTower()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -87,6 +88,7 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
+    //Highlights a tower slot when hovered over with the mouse.
     private void HandleHoverEffect()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -109,6 +111,7 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
+    //Displays a visual indicator on the hovered tower slot.
     private void ShowPlacementIndicator(TowerSlot towerSlot)
     {
         if(placementIndicatorInstance == null)
@@ -120,6 +123,7 @@ public class TowerPlacement : MonoBehaviour
         currentHoveredSlot = towerSlot;
     }
 
+    //Removes the placement indicator and clears the hovered slot.
     private void HidePlacementIndicator()
     {
         if(placementIndicatorInstance != null)
@@ -130,6 +134,7 @@ public class TowerPlacement : MonoBehaviour
         }
     }
 
+    //Enables the placement indicator when a tower is selected.
     private void Selected()
     {
         showIndicator = true;

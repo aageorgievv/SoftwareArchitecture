@@ -46,6 +46,11 @@ public class SelectionUI : MonoBehaviour
         selectionManager.OnTowerSelected -= UpdateUI;
     }
 
+    /// <summary>
+    /// Updates the stat panel of when selecting a tower
+    /// </summary>
+    /// <param name="tower"></param>
+    /// <param name="projectile"></param>
     private void UpdateUI(TowerBase tower, ProjectileBase projectile)
     {
         nameText.text = tower.name;

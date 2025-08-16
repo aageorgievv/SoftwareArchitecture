@@ -27,7 +27,10 @@ public class ElectricProjectile : ProjectileBase
         base.Start();
     }
 
-    //Stuns and applies damage to the struck enemy and then finds the nearest enemies and does the same to them
+    /// <summary>
+    /// Stuns and applies damage to the struck enemy and then finds the nearest enemies and does the same to them
+    /// </summary>
+    /// <param name="enemy"></param>
     protected override void OnHitEnemy(EnemyBase enemy)
     {
         enemy.Stun(stunDuration);
@@ -35,7 +38,10 @@ public class ElectricProjectile : ProjectileBase
         ChainToCloseEnemies(enemy.transform);
     }
 
-    //Finds the closest enemy from the first enemy (when struck), adds them to to a list and then applies stun and damage
+    /// <summary>
+    /// Finds the closest enemy from the first enemy (when struck), adds them to to a list and then applies stun and damage
+    /// </summary>
+    /// <param name="firstEnemy"></param>
     private void ChainToCloseEnemies(Transform firstEnemy)
     {
         int enemyLayer = LayerMask.GetMask("Enemy");

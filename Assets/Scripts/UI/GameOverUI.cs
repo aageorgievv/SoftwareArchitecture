@@ -39,16 +39,25 @@ public class GameOverUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Shows Game Over screen
+    /// </summary>
     private void ShowGameOverScreen()
     {
         gameOverPanel.SetActive(true); 
     }
 
+    /// <summary>
+    /// Restarts the scene
+    /// </summary>
     private void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    /// <summary>
+    /// Quits the game
+    /// </summary>
     private void QuitGame()
     {
         Application.Quit();

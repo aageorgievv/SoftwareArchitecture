@@ -45,6 +45,9 @@ public class EnemyHealthUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Updates the health bar of the enemies
+    /// </summary>
     private void UpdateHealthBar()
     {
         if (healthBarFill != null)

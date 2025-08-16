@@ -26,6 +26,9 @@ public class WinScreenUI : MonoBehaviour
         quitButton.onClick.AddListener(QuitGame);
     }
 
+    /// <summary>
+    /// Shows the Win UI screen
+    /// </summary>
     public void ShowWinScreen()
     {
         if(winScreen.activeInHierarchy)
@@ -37,11 +40,17 @@ public class WinScreenUI : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Restarts the scene
+    /// </summary>
     private void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    /// <summary>
+    /// Quits the game
+    /// </summary>
     private void QuitGame()
     {
         Application.Quit();

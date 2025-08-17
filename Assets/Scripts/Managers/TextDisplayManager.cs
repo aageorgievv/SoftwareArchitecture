@@ -43,7 +43,7 @@ public class TextDisplayManager : MonoBehaviour, IManager
     /// </summary>
     /// <param name="position"></param>
     /// <param name="money"></param>
-    private void ShowMoneyText(Vector3 position, int money)
+    private void ShowMoneyText(Vector3 position, string text)
     {
         if (textPrefab == null)
         {
@@ -55,7 +55,7 @@ public class TextDisplayManager : MonoBehaviour, IManager
 
         if (textComponent != null)
         {
-            textComponent.text = $"+{money}";
+            textComponent.text = $"+{text}";
         } else
         {
             Debug.LogError("TextComponent is null");

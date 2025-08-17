@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour, IManager
 
     private void Awake()
     {
-        if(healthManager == null)
+        if (healthManager == null)
         {
             Debug.LogError("HealthManager is null");
         }
@@ -101,11 +101,11 @@ public class GameManager : MonoBehaviour, IManager
         managers.Add(typeof(MoneyManager), moneyManager);
         managers.Add(typeof(TowerSelectionManager), selectionManager);
 
-        enemySpawner.OnWaveEnd += StartBuildPhase;
+        enemySpawner.OnWaveEnd += HandleWaveEnd;
         healthManager.OnGameOver += HandleGameOver;
-        enemySpawner.OnGameWin += HandleGameWin;
 
-        if(timeScaleSlider != null)
+
+        if (timeScaleSlider != null)
         {
             timeScaleSlider.onValueChanged.AddListener(HandleTimeScaleValueChanged);
 
@@ -130,9 +130,8 @@ public class GameManager : MonoBehaviour, IManager
 
     private void OnDestroy()
     {
-        enemySpawner.OnWaveEnd -= StartBuildPhase;
+        enemySpawner.OnWaveEnd -= HandleWaveEnd;
         healthManager.OnGameOver -= HandleGameOver;
-        enemySpawner.OnGameWin -= HandleGameWin;
         timeScaleSlider.onValueChanged.RemoveListener(HandleTimeScaleValueChanged);
     }
 
@@ -150,6 +149,21 @@ public class GameManager : MonoBehaviour, IManager
         }
 
         previousCoroutine = StartCoroutine(BuildPhaseCountDown());
+    }
+
+    /// <summary>
+    /// Checks whether the waves are completed and then shows Win screen, if not just starts building phase
+    /// </summary>
+    private void HandleWaveEnd()
+    {
+        if (enemySpawner.AreAllWavesCompleted)
+        {
+            HandleGameWin();
+        }
+        else
+        {
+            StartBuildPhase();
+        }
     }
 
     /// <summary>

@@ -21,11 +21,12 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public event Action OnWaveEnd;
-    public event Action OnGameWin;
+
+    public bool AreAllWavesCompleted => currentWaveIndex >= waves.Count;
 
     [SerializeField]
     private List<WaveConfig> waves;
-    [SerializeField] 
+    [SerializeField]
     private List<Transform> travelPoints;
     [SerializeField]
     private Transform spawnPoint;
@@ -38,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     void Update()
@@ -51,10 +52,11 @@ public class EnemySpawner : MonoBehaviour
     /// </summary>
     public void StartNextWave()
     {
-        if(currentWaveIndex < waves.Count)
+        if (currentWaveIndex < waves.Count)
         {
             StartCoroutine(SpawnWave(waves[currentWaveIndex]));
-        } else
+        }
+        else
         {
             Debug.Log("No Waves remaining");
         }
@@ -124,7 +126,7 @@ public class EnemySpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// Handles cleanup when an enemy dies and triggers wave or game completion events if applicable.
+    /// Handles cleanup when an enemy dies and triggers wave completion events.
     /// </summary>
     /// <param name="enemyBase"></param>
     private void HandleEnemyDeathEvent(EnemyBase enemyBase)
@@ -134,19 +136,23 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.LogError("Dead enemy was not spawned by this spawner.");
         }
-    
+
         if (!isSpawning && spawnedEnemies.Count <= 0)
         {
-            if (currentWaveIndex >= waves.Count)
-            {
-                Debug.Log("Game Won!");
-                OnGameWin?.Invoke();
-            }
-            else
-            {
-                Debug.Log("Wave ended");
-                OnWaveEnd?.Invoke();
-            }
+            Debug.Log("Wave Ended");
+            OnWaveEnd?.Invoke();
+
+
+            /*            if (currentWaveIndex >= waves.Count)
+                        {
+                            Debug.Log("Game Won!");
+                            OnGameWin?.Invoke();
+                        }
+                        else
+                        {
+                            Debug.Log("Wave ended");
+                            OnWaveEnd?.Invoke();
+                        }*/
         }
     }
 

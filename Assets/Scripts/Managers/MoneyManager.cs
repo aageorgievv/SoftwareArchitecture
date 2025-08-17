@@ -60,11 +60,14 @@ public class MoneyManager : MonoBehaviour, IManager
             return;
         }
 
-        if (CanAfford(amount))
+        money -= amount;
+        OnMoneyChanged?.Invoke(money);
+
+/*        if (CanAfford(amount))
         {
             money -= amount;
             OnMoneyChanged?.Invoke(money);
-        }
+        }*/
     }
 
     /// <summary>
